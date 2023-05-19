@@ -136,9 +136,9 @@ pokemon SPECIES_RATTATA
 pokemon SPECIES_PIDGEY
 
 // day encounter slots
-pokemon SPECIES_PIDGEY
-pokemon SPECIES_SENTRET
-pokemon SPECIES_PIDGEY
+pokemon SPECIES_URSALUNA //pidgey
+pokemon SPECIES_BASCULEGION //sentret
+pokemon SPECIES_KLEAVOR //pidgey
 pokemon SPECIES_SENTRET
 pokemon SPECIES_PIDGEY
 pokemon SPECIES_PIDGEY
