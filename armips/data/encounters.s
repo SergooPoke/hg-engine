@@ -124,7 +124,7 @@ walklevels 2, 3, 2, 3, 3, 3, 2, 2, 4, 4, 4, 4
 // morning encounter slots
 pokemon SPECIES_URSALUNA //pidgey
 pokemon SPECIES_BASCULEGION //sentret
-pokemon SPECIES_DUDUNSPARCE //pidgey
+pokemon SPECIES_KLEAVOR //pidgey
 pokemon SPECIES_SENTRET
 pokemon SPECIES_PIDGEY
 pokemon SPECIES_PIDGEY
