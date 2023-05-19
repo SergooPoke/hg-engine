@@ -1871,7 +1871,7 @@ evodata SPECIES_MEGANIUM
     terminateevodata
 
 evodata SPECIES_CYNDAQUIL
-    evolution EVO_LEVEL_UP, 6, SPECIES_QUILAVA //14
+    evolution EVO_LEVEL_UP, 14, SPECIES_QUILAVA
     evolution EVO_NONE, 0, SPECIES_NONE
     evolution EVO_NONE, 0, SPECIES_NONE
     evolution EVO_NONE, 0, SPECIES_NONE
