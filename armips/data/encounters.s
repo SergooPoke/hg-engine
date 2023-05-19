@@ -122,9 +122,15 @@ superrodrate 0
 walklevels 2, 3, 2, 3, 3, 3, 2, 2, 4, 4, 4, 4
 
 // morning encounter slots
+<<<<<<< HEAD
 pokemon SPECIES_URSALUNA //pidgey
 pokemon SPECIES_BASCULEGION //sentret
 pokemon SPECIES_KLEAVOR //pidgey
+=======
+pokemon SPECIES_PIDGEY
+pokemon SPECIES_SENTRET
+pokemon SPECIES_PIDGEY
+>>>>>>> parent of 1fa35170 (Test 1)
 pokemon SPECIES_SENTRET
 pokemon SPECIES_PIDGEY
 pokemon SPECIES_PIDGEY

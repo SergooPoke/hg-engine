@@ -277,7 +277,7 @@ mondata SPECIES_METAPOD, "Metapod"
     mondexweight SPECIES_METAPOD, "21.8 lbs."
 
 
-mondata SPECIES_BUTTERFREE, "Butterfroo"
+mondata SPECIES_BUTTERFREE, "Butterfree"
     basestats 60, 45, 50, 70, 90, 80
     types TYPE_BUG, TYPE_FLYING
     catchrate 45
@@ -3425,7 +3425,7 @@ mondata SPECIES_MEGANIUM, "Meganium"
 
 mondata SPECIES_CYNDAQUIL, "Cyndaquil"
     basestats 39, 52, 43, 65, 60, 50
-    types TYPE_FIRE, TYPE_FAIRY
+    types TYPE_FIRE, TYPE_FIRE
     catchrate 45
     baseexp 0 // defined in baseexp.s
     evyields 0, 0, 0, 1, 0, 0
@@ -3439,8 +3439,8 @@ mondata SPECIES_CYNDAQUIL, "Cyndaquil"
     runchance 0
     colorflip BODY_COLOR_YELLOW, 0
     tmdata SPECIES_CYNDAQUIL_TM_DATA_0, SPECIES_CYNDAQUIL_TM_DATA_1, SPECIES_CYNDAQUIL_TM_DATA_2, SPECIES_CYNDAQUIL_TM_DATA_3
-    mondexentry SPECIES_CYNDAQUIL, "It is STUPID, and always curls itself\nup in a ball. If attacked, it\nflares up its back for protection." //it is timid,
-    mondexclassification SPECIES_CYNDAQUIL, "dumass Pokémon" //fire mouse
+    mondexentry SPECIES_CYNDAQUIL, "It is timid, and always curls itself\nup in a ball. If attacked, it\nflares up its back for protection."
+    mondexclassification SPECIES_CYNDAQUIL, "Fire Mouse Pokémon"
     mondexheight SPECIES_CYNDAQUIL, "1’08”"
     mondexweight SPECIES_CYNDAQUIL, "17.4 lbs."
 
