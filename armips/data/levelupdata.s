@@ -3580,9 +3580,9 @@ levelup SPECIES_MEGANIUM
 levelup SPECIES_CYNDAQUIL
     learnset MOVE_TACKLE, 1
     learnset MOVE_LEER, 1
-    learnset MOVE_PSYSTRIKE, 5 //del
+    learnset MOVE_RAGE_FIST, 5 //del
     learnset MOVE_VOLT_TACKLE, 5 //del
-    learnset MOVE_FLYING_PRESS, 5 //del
+    learnset MOVE_FIRST_IMPRESSION, 5 //del
     learnset MOVE_SHELL_SMASH, 5 //del
     learnset MOVE_SMOKESCREEN, 6
     learnset MOVE_EMBER, 10
@@ -3602,7 +3602,7 @@ levelup SPECIES_CYNDAQUIL
 
 
 levelup SPECIES_QUILAVA
-    learnset MOVE_V_CREATE, 0 //del
+    learnset MOVE_WICKED_BLOW, 0 //del
     learnset MOVE_TACKLE, 1
     learnset MOVE_LEER, 1
     learnset MOVE_SMOKESCREEN, 1
