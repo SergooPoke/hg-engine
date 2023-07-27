@@ -539,6 +539,8 @@ typedef enum EvoMethod
     EVO_HURT_IN_BATTLE_AMOUNT, // will have to be repurposed eventually i suppose
     //EVO_DARK_SCROLL,  // implemented through a forme-change-esque cut scene
     //EVO_WATER_SCROLL, // implemented through a forme-change-esque cut scene
+    //EVO_CLOSE_DS,
+    //EVO_AMOUNT_OF_BURN_TURNS,
 } EvoMethod;
 
 typedef enum {

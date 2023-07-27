@@ -799,7 +799,13 @@ int CalcBaseDamage(void *bw, struct BattleStruct *sp, int moveno, u32 side_cond,
 
         damage /= damage2;
         damage /= 50;
-
+        
+        // hacky frostbite implementation
+        if ((AttackingMon.condition & STATUS_FLAG_FROZEN))
+        {
+            damage /= 2;
+        }
+        
         // handle light screen
         if (((side_cond & SIDE_STATUS_LIGHT_SCREEN) != 0)
          && (critical == 1)

@@ -104,6 +104,8 @@ EVO_AMOUNT_OF_CRITICAL_HITS      equ 36
 EVO_HURT_IN_BATTLE_AMOUNT        equ 37 // will have to be repurposed eventually i suppose
 //EVO_DARK_SCROLL  // implemented through an item use forme-change-esque cut scene
 //EVO_WATER_SCROLL // implemented through an item use forme-change-esque cut scene
+//EVO_CLOSE_DS                   equ 40
+//EVO_AMOUNT_OF_BURN_TURNS       equ 41
 
 // shadow size constants
 
@@ -156,6 +158,8 @@ DEX_CERULEAN_CAVE equ 0x19
 DEX_SAFFRON_CITY equ 0x1B // in top right corner of johto
 DEX_FARAWAY_PLACE_2 equ 0x1C // no flashing but in kanto
 DEX_SAFFRON_CITY_2 equ 0x1D // no flashing but in kanto*/
+//DEX_UNNAMED_MINE equ 0x1E
+//DEX_BELLCHIME_TRAIL equ 0x1F
 
 // cities/routes and the like:
 DEX_NEW_BARK_TOWN equ 0x1
@@ -228,6 +232,12 @@ DEX_SAFARI_ZONE_GATE equ 0x43
 DEX_ROUTE_16_2 equ 0x44 // same as above route 16
 /*DEX_FARAWAY_PLACE_JOHTO 0x45 // johto faraway place, no blinking
 DEX_ROUTE_1_2 0x46 // route 1 no blinking*/
+//DEX_ROUTE_49 equ 0x47
+//DEX_ROUTE_50 equ 0x48
+//DEX_ROUTE_51 equ 0x49
+//DEX_ROSEMARY_ISLAND equ 0x4A
+//DEX_GENTIAN_TOWN equ 0x4B
+//DEX_BELLCHIME_TRAIL_OUTSIDE equ 0x4C
 
 // these constants used for organization i guess
 DEX_MORNING equ 0
@@ -337,6 +347,23 @@ HM005 equ 1 << 0
 HM006 equ 1 << 1
 HM007 equ 1 << 2
 HM008 equ 1 << 3
+//TM093 equ 1 << 28
+//TM094 equ 1 << 29
+//TM095 equ 1 << 30
+//TM096 equ 1 << 31
+//TM097 equ 1 << 0
+//TM098 equ 1 << 1
+//TM099 equ 1 << 2
+//TM100 equ 1 << 3
+//HM001 equ 1 << 4
+//HM002 equ 1 << 5
+//HM003 equ 1 << 6
+//HM004 equ 1 << 7
+//HM005 equ 1 << 8
+//HM006 equ 1 << 9
+//HM007 equ 1 << 10
+//HM008 equ 1 << 11
+
 
 // tutor field constants
 
@@ -392,6 +419,7 @@ TUTOR_SKY_ATTACK           equ 1 << 16
 TUTOR_BLOCK                equ 1 << 17
 TUTOR_BUG_BITE             equ 1 << 18
 TUTOR_HEADBUTT             equ 1 << 19
+//todo
 
 // trainer classes
 
