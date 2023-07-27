@@ -539,6 +539,8 @@ typedef enum EvoMethod
     EVO_HURT_IN_BATTLE_AMOUNT, // will have to be repurposed eventually i suppose
     //EVO_DARK_SCROLL,  // implemented through a forme-change-esque cut scene
     //EVO_WATER_SCROLL, // implemented through a forme-change-esque cut scene
+    //EVO_CLOSE_DS,
+    //EVO_AMOUNT_OF_BURN_TURNS,
 } EvoMethod;
 
 typedef enum {
@@ -744,7 +746,6 @@ int __attribute__((long_call)) GetExpByGrowthRateAndLevel(int growthrate, u32 le
 u8 __attribute__((long_call)) GetOtherFormPic(MON_PIC *picdata, u16 mons_no, u8 dir, u8 col, u8 form_no);
 int __attribute__((long_call)) PokeOtherFormMonsNoGet(int mons_no, int form_no);
 u16 __attribute__((long_call)) GetSpeciesBasedOnForm(int mons_no, int form_no);
-u16 __attribute__((long_call)) GetOriginalSpeciesBasedOnAdjustedForm(u32 mons_no);
 u32 __attribute__((long_call)) PokeIconIndexGetByMonsNumber(u32 mons, u32 egg, u32 form_no);
 u16 __attribute__((long_call)) PokeIconCgxPatternGet(const void *ppp);
 u32 __attribute__((long_call)) PokeIconPalNumGet(u32 mons, u32 form, u32 isegg);
