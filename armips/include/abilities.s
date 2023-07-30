@@ -307,3 +307,33 @@ ABILITY_TOXIC_DEBRIS equ 295
 ABILITY_ARMOR_TAIL equ 296
 ABILITY_EARTH_EATER equ 297
 ABILITY_MYCELIUM_MIGHT equ 298
+
+//new abilities. the problem with these is that apparently abilities only go up to 255, so a few pre-gen 8 abilities are gonna have to be swapped
+ABILITY_STRIKER equ 310
+ABILITY_BLITZ_BOXER equ 311
+ABILITY_PERFORMER equ 312
+ABILITY_TENACIOUS equ 313
+ABILITY_SNOW_FORCE equ 314
+ABILITY_AMPLIFIER equ 315
+ABILITY_SUPER_BLASTER equ 316
+ABILITY_ANTITHETICAL equ 317
+ABILITY_INSECTICIDE equ 318
+ABILITY_PSYCHONATE equ 319
+ABILITY_SPICE_GIFT equ 320
+ABILITY_METAL_HEAD equ 321
+ABILITY_ALPHA_SURGE equ 322
+
+//preeliminary list of replacements. feel free to change as you see fit, but bear in mind that i might have already written new code.
+//striker = intrepid sword
+//blitz boxer = dauntless shield
+//performer = dancer
+//tenacious = libero
+//snow force = snow cloak
+//amplifier = punk rock
+//super blaster = mega launcher
+//antithetical = ball fetch
+//insecticide = cotton down
+//psychonate = propeller tail
+//spice gift = flower gift
+//metal head = ice face
+//alpha surge = schooling

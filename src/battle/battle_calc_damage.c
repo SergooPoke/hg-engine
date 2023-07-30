@@ -146,6 +146,22 @@ static const u16 SharpnessMovesTable[] = {
         MOVE_X_SCISSOR,
 };
 
+static const u16 StrikerMovesTable[] = {
+    MOVE_AXE_KICK,
+    MOVE_BLAZE_KICK,
+    MOVE_DOUBLE_KICK,
+    MOVE_HIGH_JUMP_KICK,
+    MOVE_JUMP_KICK,
+    MOVE_LOW_KICK,
+    MOVE_MEGA_KICK,
+    MOVE_ROLLING_KICK,
+    MOVE_THUNDEROUS_KICK,
+    MOVE_TRIPLE_KICK,
+    MOVE_TROP_KICK,
+};
+
+
+
 const u8 StatBoostModifiers[][2] = {
          // numerator, denominator
         {          10,          40 },
@@ -699,6 +715,16 @@ int CalcBaseDamage(void *bw, struct BattleStruct *sp, int moveno, u32 side_cond,
             break;
         }
     }
+    
+    // handle striker hopefully
+    for (i = 0; i < NELEMS(StrikerMovesTable); i++)
+    {
+        if ((StrikerMovesTable[i] == moveno) && (AttackingMon.ability == ABILITY_INTREPID_SWORD))
+        {
+            movepower = movepower * 13 / 10;
+            break;
+        }
+    }
 
     // handle strong jaw
     for (i = 0; i < NELEMS(StrongJawMovesTable); i++)
@@ -714,6 +740,16 @@ int CalcBaseDamage(void *bw, struct BattleStruct *sp, int moveno, u32 side_cond,
     for (i = 0; i < NELEMS(MegaLauncherMovesTable); i++)
     {
         if ((MegaLauncherMovesTable[i] == moveno) && (AttackingMon.ability == ABILITY_MEGA_LAUNCHER))
+        {
+            movepower = movepower * 15 / 10;
+            break;
+        }
+    }
+    
+     // handle super blaster hopefully
+    for (i = 0; i < NELEMS(StrikerMovesTable); i++) //bulletproof hasnt been added yet. striker as a substitute
+    {
+        if ((StrikerMovesTable[i] == moveno) && (AttackingMon.ability == ABILITY_MEGA_LAUNCHER)) //same here
         {
             movepower = movepower * 15 / 10;
             break;
@@ -957,6 +993,13 @@ int CalcBaseDamage(void *bw, struct BattleStruct *sp, int moveno, u32 side_cond,
         if (AttackingMon.ability == ABILITY_SAND_FORCE // sand force boosts damage in sand for certain move types
          && field_cond & WEATHER_SANDSTORM_ANY
          && (movetype == TYPE_GROUND || movetype == TYPE_ROCK || movetype == TYPE_STEEL))
+        {
+            damage = damage * 130 / 100;
+        }
+        
+         if (AttackingMon.ability == ABILITY_SNOW_CLOAK // snow force hopefully
+         && field_cond & WEATHER_HAIL_ANY
+         && (movetype == TYPE_ICE))
         {
             damage = damage * 130 / 100;
         }

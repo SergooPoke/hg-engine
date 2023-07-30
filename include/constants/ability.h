@@ -313,5 +313,34 @@
 #define ABILITY_EARTH_EATER 297
 #define ABILITY_MYCELIUM_MIGHT 298
 
+//new abilities. the problem with these is that apparently abilities only go up to 255, so a few pre-gen 8 abilities are gonna have to be swapped
+#define ABILITY_STRIKER 310
+#define ABILITY_BLITZ_BOXER 311
+#define ABILITY_PERFORMER 312
+#define ABILITY_TENACIOUS 313
+#define ABILITY_SNOW_FORCE 314
+#define ABILITY_AMPLIFIER 315
+#define ABILITY_SUPER_BLASTER 316
+#define ABILITY_ANTITHETICAL 317
+#define ABILITY_INSECTICIDE 318
+#define ABILITY_PSYCHONATE 319
+#define ABILITY_SPICE_GIFT 320
+#define ABILITY_METAL_HEAD 321
+#define ABILITY_ALPHA_SURGE 322
+
+//preeliminary list of replacements. feel free to change as you see fit, but bear in mind that i might have already written new code.
+//striker = intrepid sword
+//blitz boxer = dauntless shield
+//performer = dancer
+//tenacious = libero
+//snow force = snow cloak
+//amplifier = punk rock
+//super blaster = mega launcher
+//antithetical = ball fetch
+//insecticide = cotton down
+//psychonate = propeller tail
+//spice gift = flower gift
+//metal head = ice face
+//alpha surge = schooling
 
 #endif
