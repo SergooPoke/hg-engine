@@ -85,3 +85,5 @@ tools/swav2swar.exe
 armips/data/evodata.s
 armips/data/levelupdata.s
 armips/data/mondata.s
+armips/data/mondata.s
+armips/data/encounters.s

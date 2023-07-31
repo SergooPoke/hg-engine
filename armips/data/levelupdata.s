@@ -3539,8 +3539,9 @@ levelup SPECIES_BAYLEEF
     learnset MOVE_RAZOR_LEAF, 1
     learnset MOVE_POISON_POWDER, 1
     learnset MOVE_RAZOR_LEAF, 6
-    learnset MOVE_HAIL, 7 // delete
-    learnset MOVE_POWDER_SNOW, 7 // delete
+    learnset MOVE_FIRE_PUNCH, 7 // delete
+    learnset MOVE_MACH_PUNCH, 7 // delete
+    learnset MOVE_SUNNY_DAY, 7 // delete
     learnset MOVE_POISON_POWDER, 9
     learnset MOVE_SYNTHESIS, 12
     learnset MOVE_REFLECT, 18

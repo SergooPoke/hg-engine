@@ -82,6 +82,33 @@ const u16 TriageMovesList[] = {
     MOVE_SYNTHESIS,
     MOVE_WISH,
 };
+//iron fist moves for blitz boxer
+const u16 IronFistMovesList[] = {
+    MOVE_BULLET_PUNCH,
+    MOVE_COMET_PUNCH,
+    MOVE_DIZZY_PUNCH,
+    MOVE_DOUBLE_IRON_BASH,
+    MOVE_DRAIN_PUNCH,
+    MOVE_DYNAMIC_PUNCH,
+    MOVE_FIRE_PUNCH,
+    MOVE_FOCUS_PUNCH,
+    MOVE_HAMMER_ARM,
+    MOVE_HEADLONG_RUSH,
+    MOVE_ICE_HAMMER,
+    MOVE_ICE_PUNCH,
+    MOVE_JET_PUNCH,
+    MOVE_MACH_PUNCH,
+    MOVE_MEGA_PUNCH,
+    MOVE_METEOR_MASH,
+    MOVE_PLASMA_FISTS,
+    MOVE_POWER_UP_PUNCH,
+    MOVE_RAGE_FIST,
+    MOVE_SHADOW_PUNCH,
+    MOVE_SKY_UPPERCUT,
+    MOVE_SURGING_STRIKES,
+    MOVE_THUNDER_PUNCH,
+    MOVE_WICKED_BLOW,
+};
 
 // set sp->waza_status_flag |= MOVE_STATUS_FLAG_MISS if a miss
 BOOL CalcAccuracy(void *bw, struct BattleStruct *sp, int attacker, int defender, int move_no)
@@ -407,11 +434,16 @@ u8 CalcSpeed(void *bw, struct BattleStruct *sp, int client1, int client2, int fl
         {
             speed2 *= 2;
         }
-        //hacky spice gift speed buff. only works on spice gift mon.
+        //hacky spice gift speed buff. only affects flower gift mon atm.
         if ((ability1 == ABILITY_FLOWER_GIFT) && (sp->field_condition & WEATHER_SUNNY_ANY))
-    {
-        speed1 = speed1 * 15 / 10;
-    }
+        {
+            speed1 = speed1 * 15 / 10;
+        }
+        if ((ability2 == ABILITY_FLOWER_GIFT) && (sp->field_condition & WEATHER_SUNNY_ANY))
+        {
+            speed2 = speed2 * 15 / 10;
+        }
+        //CHECK VICTORY STAR implementation, might help.
     }
 
     for (i = 0; i < NELEMS(DecreaseSpeedHoldEffects); i++)
@@ -629,7 +661,7 @@ u8 CalcSpeed(void *bw, struct BattleStruct *sp, int client1, int client2, int fl
         (
             GetBattlerAbility(sp, client1) == ABILITY_GALE_WINGS
             && sp->moveTbl[move1].type == TYPE_FLYING
-            && sp->battlemon[client1].hp == sp->battlemon[client1].maxhp
+            //&& sp->battlemon[client1].hp == sp->battlemon[client1].maxhp
         ) {
             priority1++;
         }
@@ -638,7 +670,7 @@ u8 CalcSpeed(void *bw, struct BattleStruct *sp, int client1, int client2, int fl
         (
             GetBattlerAbility(sp, client2) == ABILITY_GALE_WINGS
             && sp->moveTbl[move2].type == TYPE_FLYING
-            && sp->battlemon[client2].hp == sp->battlemon[client2].maxhp
+            //&& sp->battlemon[client2].hp == sp->battlemon[client2].maxhp
         ) {
             priority2++;
         }
@@ -659,6 +691,26 @@ u8 CalcSpeed(void *bw, struct BattleStruct *sp, int client1, int client2, int fl
             {
                 if (TriageMovesList[i] == move2) {
                     priority2 = priority2 + 3;
+                    break;
+                }
+            }
+        }
+        //blitz boxer implementation (hopefully)
+         if (GetBattlerAbility(sp, client1) == ABILITY_DAUNTLESS_SHIELD) {
+            for (i = 0; i < NELEMS(IronFistMovesList); i++)
+            {
+                if (IronFistMovesList[i] == move1) {
+                    priority1 = priority1 + 1;
+                    break;
+                }
+            }
+        }
+
+        if (GetBattlerAbility(sp, client2) == ABILITY_DAUNTLESS_SHIELD) {
+            for (i = 0; i < NELEMS(IronFistMovesList); i++)
+            {
+                if (IronFistMovesList[i] == move2) {
+                    priority2 = priority2 + 1;
                     break;
                 }
             }

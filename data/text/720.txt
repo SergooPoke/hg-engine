@@ -79,7 +79,7 @@ Tangled Feet
 Motor Drive
 Rivalry
 Steadfast
-Snow Force//Snow Cloak
+Snow Force
 Gluttony
 Anger Point
 Unburden
@@ -120,7 +120,7 @@ Honey Gather
 Frisk
 Reckless
 Multitype
-Spice Gift//Flower Gift
+Spice Gift
 Bad Dreams
 Pickpocket
 Sheer Force
@@ -176,7 +176,7 @@ Refrigerate
 Sweet Veil
 Stance Change
 Gale Wings
-Super Blaster//Mega Launcher
+Super Blaster
 Grass Pelt
 Symbiosis
 Tough Claws
@@ -206,7 +206,7 @@ Liquid Voice
 Triage
 Galvanize
 Surge Surfer
-Alpha Surge//Schooling
+Alpha Surge
 Disguise
 Battle Bond
 Power Construct
@@ -214,7 +214,7 @@ Corrosion
 Comatose
 Queenly Majesty
 Innards Out
-Performer//Dancer
+Performer
 Battery
 Fluffy
 Dazzling
@@ -232,21 +232,21 @@ Full Metal Body
 Shadow Shield
 Prism Armor
 Neuroforce
-Striker//Intrepid Sword
-Blitz Boxer//Dauntless Shield
-Tenacious//Libero
-Antithetical//Ball Fetch
-Insecticide//Cotton Down
-Psychonate//Propeller Tail
+Striker
+Blitz Boxer
+Tenacious
+Antithetical
+Insecticide
+Psychonate
 Mirror Armor
 Gulp Missile
 Stalwart
 Steam Engine
-Amplifier//Punk Rock
+Amplifier
 Sand Spit
 Ice Scales
 Ripen
-Metal Head//Ice Face
+Metal Head
 Power Spot
 Mimicry
 Screen Cleaner
