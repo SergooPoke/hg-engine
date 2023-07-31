@@ -236,7 +236,7 @@ BOOL CalcAccuracy(void *bw, struct BattleStruct *sp, int attacker, int defender,
         {
             if (MoldBreakerAbilityCheck(sp, attacker, defender, ABILITY_SNOW_CLOAK) == TRUE)
             {
-                accuracy = accuracy * 80 / 100;
+                accuracy = accuracy * 100 / 100; //(hopefully) removed evasion check as snow cloak is no more. formerly 80 / 100
             }
         }
         if (sp->field_condition & FIELD_STATUS_FOG)
@@ -247,7 +247,7 @@ BOOL CalcAccuracy(void *bw, struct BattleStruct *sp, int attacker, int defender,
 
     if ((GetBattlerAbility(sp, attacker) == ABILITY_HUSTLE) && (move_split == SPLIT_PHYSICAL))
     {
-        accuracy = accuracy * 80 / 100;
+        accuracy = accuracy * 90 / 100; //formerly 80 / 100
     }
 
     if ((MoldBreakerAbilityCheck(sp, attacker, defender, ABILITY_TANGLED_FEET) == TRUE)
@@ -407,6 +407,11 @@ u8 CalcSpeed(void *bw, struct BattleStruct *sp, int client1, int client2, int fl
         {
             speed2 *= 2;
         }
+        //hacky spice gift speed buff. only works on spice gift mon.
+        if ((ability1 == ABILITY_FLOWER_GIFT) && (sp->field_condition & WEATHER_SUNNY_ANY))
+    {
+        speed1 = speed1 * 15 / 10;
+    }
     }
 
     for (i = 0; i < NELEMS(DecreaseSpeedHoldEffects); i++)

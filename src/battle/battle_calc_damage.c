@@ -797,9 +797,9 @@ int CalcBaseDamage(void *bw, struct BattleStruct *sp, int moveno, u32 side_cond,
         }
         if ((field_cond & WEATHER_SUNNY_ANY) &&
             (GetBattlerAbility(sp, attacker) != ABILITY_MOLD_BREAKER) &&
-            (CheckSideAbility(bw, sp, CHECK_PLAYER_SIDE_ALIVE, defender, ABILITY_FLOWER_GIFT)))
+            (CheckSideAbility(bw, sp, CHECK_PLAYER_SIDE_ALIVE, defender, ABILITY_FLOWER_GIFT))) //spice gift raises speed, not spdef. speed is in other_battle_calculators.
         {
-            sp_defense = sp_defense * 15 / 10;
+            sp_defense = sp_defense * 10 / 10; //formerly 15 / 10
         }
     }
 

@@ -1,9 +1,9 @@
  -
-The stench helps keep\nwild Pokémon away.
+The stench may cause\nthe target to flinch.//The stench helps keep\nwild Pokémon away.
 The Pokémon makes it rain\nif it appears in battle.
 Its Speed stat is\ngradually boosted.
 The Pokémon is protected\nagainst critical hits.
-It is protected against\n1-hit KO attacks.
+It cannot be knocked\nout with one hit.//It is protected against\n1-hit KO attacks.
 Prevents combatants\nfrom self-destructing.
 The Pokémon is protected\nfrom paralysis.
 Boosts the Pokémon’s\nevasion in a sandstorm.
@@ -29,7 +29,7 @@ Contact may paralyze,\npoison, or cause sleep.
 Passes a burn, poison,\nor paralysis to the foe.
 Prevents its stats from\nbeing lowered.
 All status problems heal\nwhen it switches out.
-The Pokémon draws in all\nElectric-type moves.
+Draws in all Electric-type\nmoves to up Sp. Attack.//The Pokémon draws in all\nElectric-type moves.
 Boosts the likelihood of\nadded effects appearing.
 Boosts the Pokémon’s\nSpeed in rain.
 Boosts the Pokémon’s\nSpeed in sunshine.
@@ -52,7 +52,7 @@ Enables sure getaway\nfrom wild Pokémon.
 Prevents the Pokémon\nfrom losing accuracy.
 Prevents the Attack\nstat from being lowered.
 The Pokémon may\npick up items.
-Pokémon can’t attack\non consecutive turns.
+Pokémon can only heal\non consecutive turns.//Pokémon can’t attack\non consecutive turns.
 Boosts the Attack stat,\nbut lowers accuracy.
 Contact with the Pokémon\nmay cause infatuation.
 Ups Sp. Atk if another\nPokémon has Minus.
@@ -79,7 +79,7 @@ Raises evasion if the\nPokémon is confused.
 Raises Speed if hit by an\nElectric-type move.
 Raises Attack if the foe\nis of the same gender.
 Raises Speed each time\nthe Pokémon flinches.
-Raises evasion in a\nhailstorm.
+Boosts Ice-type moves’\npower in a snowstorm.//Raises evasion in a\nhailstorm.
 Encourages the early use\nof a held Berry.
 Raises Attack upon\ntaking a critical hit.
 Raises Speed if a held\nitem is used.
@@ -112,10 +112,10 @@ Powers up “not very\neffective” moves.
 Reduces damage from\nsupereffective attacks.
 Temporarily halves\nAttack and Speed.
 Enables moves to hit\nGhost-type foes.
-The Pokémon draws in all\nWater-type moves.
-The Pokémon regains HP in\na hailstorm.
+Draws in all Water-type\nmoves to up Sp. Attack.//The Pokémon draws in all\nWater-type moves.
+The Pokémon regains HP in\na snowstorm.//The Pokémon regains HP in\na hailstorm.
 Reduces damage from\nsupereffective attacks
-The Pokémon summons a\nhailstorm in battle.
+The Pokémon summons a\nsnowstorm in battle.//The Pokémon summons a\nhailstorm in battle.
 The Pokémon may gather\nHoney from somewhere.
 The Pokémon can check\nthe foe’s held item.
 Powers up moves that\nhave recoil damage.
@@ -175,8 +175,8 @@ Boosts the power of\nbiting moves.
 Normal-type moves become\nIce-type and powered up.
 Prevents itself and\nallies from falling asleep.
 Changes between Blade and\nShield Forme with attacks.
-Flying-type moves gain\npriority when its HP is full.
-Powers up aura and\npulse moves.
+Flying-type moves gain\npriority.//Flying-type moves gain\npriority when its HP is full.
+Powers up ball\nmoves.//Powers up aura and\npulse moves.
 Boosts the Defense stat\non Grassy Terrain.
 Passes its held item to\nan ally that has used theirs.
 Powers up moves that\nmake direct contact.
@@ -200,13 +200,13 @@ Deals doubles damage to\na target’s replacement.
 Weakens incoming Fire-type\nmoves and prevents burns.
 Powers up\nSteel-type moves.
 Ups Sp. Atk if a hit\nmakes its HP half or less.
-Boosts the Pokémon’s\nSpeed stat in a hailstorm.
+Boosts the Pokémon’s\nSpeed stat in a snowstorm.//Boosts the Pokémon’s\nSpeed stat in a hailstorm.
 Uses moves without\nmaking contact with the target.
 Its sound-based moves\nbecome Water-type.
 Gives priority to\na healing move.
 Normal-type moves become\nElectric-type and powered.
 Doubles Speed on\nElectric Terrain.
-Forms a powerful school\nwhile it has a lot of HP.
+Summons many Unown\nwhile it has a lot of HP.//Forms a powerful school\nwhile it has a lot of HP.
 Its shroud protects\nit from an attack just once.
 Defeating a foe\nlets it become Ash-Greninja.
 Changes with other Cells\nif HP becomes half or less.
@@ -214,7 +214,7 @@ It can poison Steel- and\nPoison-type targets.
 It’s always drowsing,\nand attacks without waking.
 Makes foes unable to\nuse priority attacks.
 Damages an attacker that\nlands the finishing hit.
-Repeats another Pokémon’s\ndance move immediately.
+Uses dancing moves twice\nfor double the PP.//Repeats another Pokémon’s\ndance move immediately.
 Powers up ally\nPokémon’s special moves.
 Resists contact damage\nbut weaker to Fire-type.
 Makes foes unable to\nuse priority attacks.
@@ -232,12 +232,12 @@ Prevents other Pokémon\nfrom lowering its stats.
 Resists damage while\nits HP is full.
 Reduces damage from\nsuper-effective attacks.
 Powers up moves that\nare super-effective.
-Boosts Attack when\nentering a battle.
-Boosts Defense when\nentering a battle.
-It changes type to that\nof the move it’s about to use.
-Retrieves the first\nthrown Poké Ball if it failed.
-Scatters Speed-lowering\ncotton fluff when hit.
-This Pokémon’s\nmoves cannot be redirected.
+Boosts the power of\nkicking moves.//Boosts Attack when\nentering a battle.
+Punching moves gain\npriority.//Boosts Defense when\nentering a battle.
+Punching moves hit\ntwice.//It changes type to that\nof the move it’s about to use.
+Reverses recoil and\nself-healing.//Retrieves the first\nthrown Poké Ball if it failed.
+Boosts Defense when\nhit by a Bug-type move.//Scatters Speed-lowering\ncotton fluff when hit.
+Normal-type moves become\nPsychic-type and powered.//This Pokémon’s\nmoves cannot be redirected.
 Bounces back\nstat-lowering effects.
 Catches prey via Surf or Dive\nand spits it out when hit.
 This Pokémon’s moves\ncannot be redirected.
@@ -246,7 +246,7 @@ Powers up own sound moves.\nResists other sound moves.
 Creates a sandstorm\nwhen hit by an attack.
 Halves the damage\ntaken from special moves.
 Ripens Berries and\ndoubles their effect.
-Blocks a physical hit, but\nthe ice head breaks. 
+Blocks a physical hit, but\nthe metal head breaks.//Blocks a physical hit, but\nthe ice head breaks. 
 Just being next to\nthe Pokémon powers up moves.
 Changes type depending\non the terrain.
 On entering battle, clears\neffects of Reflect, etc.

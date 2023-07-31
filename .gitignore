@@ -82,3 +82,6 @@ sdat/*
 tools/swav2swar.exe
 
 *:Zone.Identifier
+armips/data/evodata.s
+armips/data/levelupdata.s
+armips/data/mondata.s
