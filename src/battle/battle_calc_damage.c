@@ -119,6 +119,34 @@ static const u16 MegaLauncherMovesTable[] = {
         MOVE_WATER_PULSE,
 };
 
+static const u16 BulletproofMovesTable[] = { //for super blaster
+    MOVE_ACID_SPRAY,
+    MOVE_AURA_SPHERE,
+    MOVE_BARRAGE,
+    MOVE_BEAK_BLAST,
+    MOVE_BULLET_SEED,
+    MOVE_EGG_BOMB,
+    MOVE_ELECTRO_BALL,
+    MOVE_ENERGY_BALL,
+    MOVE_FOCUS_BLAST,
+    MOVE_GYRO_BALL,
+    MOVE_ICE_BALL,
+    MOVE_MAGNET_BOMB,
+    MOVE_MIST_BALL,
+    MOVE_MUD_BOMB,
+    MOVE_OCTAZOOKA,
+    MOVE_POLLEN_PUFF,
+    MOVE_PYRO_BALL,
+    MOVE_ROCK_BLAST,
+    MOVE_ROCK_WRECKER,
+    MOVE_SEARING_SHOT,
+    MOVE_SEED_BOMB,
+    MOVE_SHADOW_BALL,
+    MOVE_SLUDGE_BOMB,
+    MOVE_WEATHER_BALL,
+    MOVE_ZAP_CANNON
+};
+
 static const u16 SharpnessMovesTable[] = {
         MOVE_AERIAL_ACE,
         MOVE_AIR_CUTTER,
@@ -591,31 +619,37 @@ int CalcBaseDamage(void *bw, struct BattleStruct *sp, int moveno, u32 side_cond,
     // handle aerilate - 20% boost if a normal type move was changed to a flying type move.  does not boost flying type moves themselves
     if (GetBattlerAbility(sp, attacker) == ABILITY_AERILATE && movetype == TYPE_FLYING && sp->moveTbl[moveno].type == TYPE_NORMAL)
     {
-        movepower = movepower * 120 / 100;
+        movepower = movepower * 130 / 100; //gen 6 boost
     }
 
     // handle pixilate - 20% boost if a normal type move was changed to a fairy type move.  does not boost fairy type moves themselves
     if (GetBattlerAbility(sp, attacker) == ABILITY_PIXILATE && movetype == TYPE_FAIRY && sp->moveTbl[moveno].type == TYPE_NORMAL)
     {
-        movepower = movepower * 120 / 100;
+        movepower = movepower * 130 / 100; //gen 6 boost
     }
 
     // handle galvanize - 20% boost if a normal type move was changed to an electric type move.  does not boost electric type moves themselves
     if (GetBattlerAbility(sp, attacker) == ABILITY_GALVANIZE && movetype == TYPE_ELECTRIC && sp->moveTbl[moveno].type == TYPE_NORMAL)
     {
-        movepower = movepower * 120 / 100;
+        movepower = movepower * 130 / 100; //gen 6 boost
     }
-
+    
     // handle refrigerate - 20% boost if a normal type move was changed to an ice type move.  does not boost ice type moves themselves
     if (GetBattlerAbility(sp, attacker) == ABILITY_REFRIGERATE && movetype == TYPE_ICE && sp->moveTbl[moveno].type == TYPE_NORMAL)
     {
-        movepower = movepower * 120 / 100;
+        movepower = movepower * 130 / 100; //gen 6 boost
     }
 
+    // handle psychonate
+    if (GetBattlerAbility(sp, attacker) == ABILITY_PROPELLER_TAIL && movetype == TYPE_PSYCHIC && sp->moveTbl[moveno].type == TYPE_NORMAL)
+    {
+        movepower = movepower * 130 / 100; //gen 6 boost
+    }
+    
     // handle normalize - 20% boost if a normal type move is used (and it changes types to normal too)
     if (GetBattlerAbility(sp, attacker) == ABILITY_NORMALIZE && movetype == TYPE_NORMAL)
     {
-        movepower = movepower * 120 / 100;
+        movepower = movepower * 130 / 100; //gen 6 boost
     }
 
     // handle heatproof/dry skin
@@ -741,15 +775,15 @@ int CalcBaseDamage(void *bw, struct BattleStruct *sp, int moveno, u32 side_cond,
     {
         if ((MegaLauncherMovesTable[i] == moveno) && (AttackingMon.ability == ABILITY_MEGA_LAUNCHER))
         {
-            movepower = movepower * 15 / 10;
+            movepower = movepower * 10 / 10; //formerly 15 / 10
             break;
         }
     }
     
      // handle super blaster hopefully
-    for (i = 0; i < NELEMS(StrikerMovesTable); i++) //bulletproof hasnt been added yet. striker as a substitute
+    for (i = 0; i < NELEMS(BulletproofMovesTable); i++)
     {
-        if ((StrikerMovesTable[i] == moveno) && (AttackingMon.ability == ABILITY_MEGA_LAUNCHER)) //same here
+        if ((BulletproofMovesTable[i] == moveno) && (AttackingMon.ability == ABILITY_MEGA_LAUNCHER))
         {
             movepower = movepower * 15 / 10;
             break;

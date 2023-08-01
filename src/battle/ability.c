@@ -1035,31 +1035,31 @@ int SwitchInAbilityCheck(void *bw, struct BattleStruct *sp)
                     }
                 }
                 break;
-            case SWITCH_IN_CHECK_ICE_FACE: // rebuild ice face
+            case SWITCH_IN_CHECK_ICE_FACE: // rebuild ice face //metal head doesnt rebuild, no matter the weather
                 for (i = 0; i < client_set_max; i++)
                 {
-                    client_no = sp->turn_order[i];
-                    if ((sp->battlemon[client_no].species == SPECIES_EISCUE)
-                     && (sp->battlemon[client_no].hp)
-                     && (sp->battlemon[client_no].form_no == 1)
-                     && (CheckSideAbility(bw, sp, CHECK_ALL_BATTLER_ALIVE, 0, ABILITY_CLOUD_NINE) == 0)
-                     && (CheckSideAbility(bw, sp, CHECK_ALL_BATTLER_ALIVE, 0, ABILITY_AIR_LOCK) == 0)
-                     && (sp->field_condition & WEATHER_HAIL_ANY)               // there is hail this turn
-                     && ((sp->log_hail_for_ice_face & (1 << client_no)) == 0)  // and hail wasn't here last turn/the mon just switched in
-                     && (GetBattlerAbility(sp, client_no) == ABILITY_ICE_FACE)
-                    )
-                    {
-                        sp->client_work = client_no;
-                        BattleFormChange(client_no, 0, bw, sp, TRUE);
-                        sp->battlemon[client_no].form_no = 0;
-                        scriptnum = SUB_SEQ_HANDLE_RESTORE_ICE_FACE;
-                        ret = TRUE;
-                    }
+                    //client_no = sp->turn_order[i];
+                    //if ((sp->battlemon[client_no].species == SPECIES_EISCUE)
+                     //&& (sp->battlemon[client_no].hp)
+                     //&& (sp->battlemon[client_no].form_no == 1)
+                     //&& (CheckSideAbility(bw, sp, CHECK_ALL_BATTLER_ALIVE, 0, ABILITY_CLOUD_NINE) == 0)
+                     //&& (CheckSideAbility(bw, sp, CHECK_ALL_BATTLER_ALIVE, 0, ABILITY_AIR_LOCK) == 0)
+                     //&& (sp->field_condition & WEATHER_HAIL_ANY)               // there is hail this turn
+                     //&& ((sp->log_hail_for_ice_face & (1 << client_no)) == 0)  // and hail wasn't here last turn/the mon just switched in
+                     //&& (GetBattlerAbility(sp, client_no) == ABILITY_ICE_FACE)
+                    //)
+                    //{
+                        //sp->client_work = client_no;
+                        //BattleFormChange(client_no, 0, bw, sp, TRUE);
+                        //sp->battlemon[client_no].form_no = 0;
+                        //scriptnum = SUB_SEQ_HANDLE_RESTORE_ICE_FACE;
+                        //ret = TRUE;
+                    //}
 
-                    if (sp->field_condition & WEATHER_HAIL_ANY) // update log_hail_for_ice_face
-                        sp->log_hail_for_ice_face |= (1 << client_no);
-                    else
-                        sp->log_hail_for_ice_face &= ~(1 << client_no);
+                    //if (sp->field_condition & WEATHER_HAIL_ANY) // update log_hail_for_ice_face
+                        //sp->log_hail_for_ice_face |= (1 << client_no);
+                    //else
+                        //sp->log_hail_for_ice_face &= ~(1 << client_no);
 
                     if (ret)
                         break;
@@ -1067,7 +1067,7 @@ int SwitchInAbilityCheck(void *bw, struct BattleStruct *sp)
                 if (i == client_set_max) {
                     sp->switch_in_check_seq_no++;
                 }
-                break;
+               break;
 
 
 

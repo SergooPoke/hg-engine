@@ -1154,34 +1154,6 @@ u16 SoundProofMovesList[] = {
     MOVE_UPROAR
 };
 
-u16 BulletproofMovesList[] = { //should this be here? idk, but soundproof is so
-    MOVE_ACID_SPRAY,
-    MOVE_AURA_SPHERE,
-    MOVE_BARRAGE,
-    MOVE_BEAK_BLAST,
-    MOVE_BULLET_SEED,
-    MOVE_EGG_BOMB,
-    MOVE_ELECTRO_BALL,
-    MOVE_ENERGY_BALL,
-    MOVE_FOCUS_BLAST,
-    MOVE_GYRO_BALL,
-    MOVE_ICE_BALL,
-    MOVE_MAGNET_BOMB,
-    MOVE_MIST_BALL,
-    MOVE_MUD_BOMB,
-    MOVE_OCTAZOOKA,
-    MOVE_POLLEN_PUFF,
-    MOVE_PYRO_BALL,
-    MOVE_ROCK_BLAST,
-    MOVE_ROCK_WRECKER,
-    MOVE_SEARING_SHOT,
-    MOVE_SEED_BOMB,
-    MOVE_SHADOW_BALL,
-    MOVE_SLUDGE_BOMB,
-    MOVE_WEATHER_BALL,
-    MOVE_ZAP_CANNON
-};
-
 // needed for the AI.  doesn't have client access, just move ability type
 u32 GetAdjustedMoveTypeBasics(struct BattleStruct *sp, u32 move, u32 ability, u32 type)
 {
@@ -1191,7 +1163,7 @@ u32 GetAdjustedMoveTypeBasics(struct BattleStruct *sp, u32 move, u32 ability, u3
     {
         typeLocal = TYPE_NORMAL;
     }
-    else if (sp->moveTbl[move].type == TYPE_NORMAL)
+    else if (sp->moveTbl[move].type == TYPE_NORMAL && move != MOVE_HIDDEN_POWER) //apparently w/o this hp is broken
     {
         if (ability == ABILITY_PIXILATE)
         {
