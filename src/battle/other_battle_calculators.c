@@ -434,7 +434,7 @@ u8 CalcSpeed(void *bw, struct BattleStruct *sp, int client1, int client2, int fl
         {
             speed2 *= 2;
         }
-        //hacky spice gift speed buff. only affects flower gift mon atm.
+        //hacky spice gift speed buff.
         if ((ability1 == ABILITY_FLOWER_GIFT) && (sp->field_condition & WEATHER_SUNNY_ANY))
         {
             speed1 = speed1 * 15 / 10;
@@ -443,7 +443,15 @@ u8 CalcSpeed(void *bw, struct BattleStruct *sp, int client1, int client2, int fl
         {
             speed2 = speed2 * 15 / 10;
         }
-        //CHECK VICTORY STAR implementation, might help.
+        //spice gift partner check. turns out someone had the same issue as me a while back and made the proper code. i just copied it. so close to figuring it out myself though.
+        if (GetBattlerAbility(sp, BATTLER_ALLY(client1)) == ABILITY_FLOWER_GIFT && sp->battlemon[BATTLER_ALLY(client1)].hp != 0 && (sp->field_condition & WEATHER_SUNNY_ANY))
+        {
+            speed1 = speed1 * 15 / 10;
+        }
+        if (GetBattlerAbility(sp, BATTLER_ALLY(client2)) == ABILITY_FLOWER_GIFT && sp->battlemon[BATTLER_ALLY(client2)].hp != 0 && (sp->field_condition & WEATHER_SUNNY_ANY))
+        {
+            speed2 = speed2 * 15 / 10;
+        }
     }
 
     for (i = 0; i < NELEMS(DecreaseSpeedHoldEffects); i++)
