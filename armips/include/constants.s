@@ -235,9 +235,10 @@ DEX_ROUTE_1_2 0x46 // route 1 no blinking*/
 //DEX_ROUTE_49 equ 0x47
 //DEX_ROUTE_50 equ 0x48
 //DEX_ROUTE_51 equ 0x49
-//DEX_ROSEMARY_ISLAND equ 0x4A
-//DEX_GENTIAN_TOWN equ 0x4B
-//DEX_BELLCHIME_TRAIL_OUTSIDE equ 0x4C
+//DEX_WASTEDUMP equ 0x4A
+//DEX_ROSEMARY_ISLAND equ 0x4B
+//DEX_GENTIAN_TOWN equ 0x4C
+//DEX_BELLCHIME_TRAIL_OUTSIDE equ 0x4D
 
 // these constants used for organization i guess
 DEX_MORNING equ 0
