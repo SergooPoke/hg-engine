@@ -191,6 +191,15 @@ int MoveCheckDamageNegatingAbilities(struct BattleStruct *sp, int attacker, int 
             scriptnum = SUB_SEQ_HANDLE_SAP_SIPPER;
         }
     }
+    
+    // handle insecticide TODO
+    if (MoldBreakerAbilityCheck(sp, attacker, defender, ABILITY_COTTON_DOWN) == TRUE)
+    {
+        if ((movetype == TYPE_BUG) && (attacker != defender))
+        {
+            scriptnum = SUB_SEQ_HANDLE_SAP_SIPPER; //SUB_SEQ_HANDLE_INSECTICIDE
+        }
+    }
 
     // handle lightning rod
     if (MoldBreakerAbilityCheck(sp, attacker, defender, ABILITY_LIGHTNING_ROD) == TRUE)
