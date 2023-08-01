@@ -193,11 +193,11 @@ int MoveCheckDamageNegatingAbilities(struct BattleStruct *sp, int attacker, int 
     }
     
     // handle insecticide TODO
-    if (MoldBreakerAbilityCheck(sp, attacker, defender, ABILITY_COTTON_DOWN) == TRUE)
+    if (MoldBreakerAbilityCheck(sp, attacker, defender, ABILITY_COTTON_DOWN) == TRUE) //currently sub_seq 345. will def have to edit it later down the line as more official sub_seqs are added.
     {
         if ((movetype == TYPE_BUG) && (attacker != defender))
         {
-            scriptnum = SUB_SEQ_HANDLE_SAP_SIPPER; //SUB_SEQ_HANDLE_INSECTICIDE
+            scriptnum = SUB_SEQ_HANDLE_INSECTICIDE; //SUB_SEQ_HANDLE_SAP_SIPPER
         }
     }
 
@@ -247,7 +247,6 @@ enum
     SWITCH_IN_CHECK_FAIRY_AURA,
     SWITCH_IN_CHECK_AURA_BREAK,
     SWITCH_IN_CHECK_IMPOSTER,
-    SWITCH_IN_CHECK_ICE_FACE,
 
 // items that display messages.
     SWITCH_IN_CHECK_AIR_BALLOON,
@@ -1044,42 +1043,7 @@ int SwitchInAbilityCheck(void *bw, struct BattleStruct *sp)
                     }
                 }
                 break;
-            case SWITCH_IN_CHECK_ICE_FACE: // rebuild ice face //metal head doesnt rebuild, no matter the weather
-                for (i = 0; i < client_set_max; i++)
-                {
-                    //client_no = sp->turn_order[i];
-                    //if ((sp->battlemon[client_no].species == SPECIES_EISCUE)
-                     //&& (sp->battlemon[client_no].hp)
-                     //&& (sp->battlemon[client_no].form_no == 1)
-                     //&& (CheckSideAbility(bw, sp, CHECK_ALL_BATTLER_ALIVE, 0, ABILITY_CLOUD_NINE) == 0)
-                     //&& (CheckSideAbility(bw, sp, CHECK_ALL_BATTLER_ALIVE, 0, ABILITY_AIR_LOCK) == 0)
-                     //&& (sp->field_condition & WEATHER_HAIL_ANY)               // there is hail this turn
-                     //&& ((sp->log_hail_for_ice_face & (1 << client_no)) == 0)  // and hail wasn't here last turn/the mon just switched in
-                     //&& (GetBattlerAbility(sp, client_no) == ABILITY_ICE_FACE)
-                    //)
-                    //{
-                        //sp->client_work = client_no;
-                        //BattleFormChange(client_no, 0, bw, sp, TRUE);
-                        //sp->battlemon[client_no].form_no = 0;
-                        //scriptnum = SUB_SEQ_HANDLE_RESTORE_ICE_FACE;
-                        //ret = TRUE;
-                    //}
-
-                    //if (sp->field_condition & WEATHER_HAIL_ANY) // update log_hail_for_ice_face
-                        //sp->log_hail_for_ice_face |= (1 << client_no);
-                    //else
-                        //sp->log_hail_for_ice_face &= ~(1 << client_no);
-
-                    if (ret)
-                        break;
-                }
-                if (i == client_set_max) {
-                    sp->switch_in_check_seq_no++;
-                }
-               break;
-
-
-
+//ice face hail check completely removed. has not done anything to fix the weird new warnings. might just have to re-add it.                
             case SWITCH_IN_CHECK_AIR_BALLOON:
                 for(i = 0; i < client_set_max; i++)
                 {

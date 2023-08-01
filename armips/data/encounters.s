@@ -123,8 +123,8 @@ walklevels 2, 3, 2, 3, 3, 3, 2, 2, 4, 4, 4, 4
 
 // morning encounter slots
 pokemon SPECIES_EISCUE //pidgey
-pokemon SPECIES_ZUBAT //sentret
-pokemon SPECIES_HOUNDOUR //pidgey
+pokemon SPECIES_NINJASK //sentret
+pokemon SPECIES_PIDGEY
 pokemon SPECIES_SENTRET
 pokemon SPECIES_PIDGEY
 pokemon SPECIES_PIDGEY
@@ -137,8 +137,8 @@ pokemon SPECIES_PIDGEY
 
 // day encounter slots
 pokemon SPECIES_EISCUE //pidgey
-pokemon SPECIES_ZUBAT //sentret
-pokemon SPECIES_HOUNDOUR //pidgey
+pokemon SPECIES_NINJASK //sentret
+pokemon SPECIES_PIDGEY
 pokemon SPECIES_SENTRET
 pokemon SPECIES_PIDGEY
 pokemon SPECIES_PIDGEY

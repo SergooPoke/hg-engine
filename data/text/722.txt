@@ -236,7 +236,7 @@ Boosts the power of\nkicking moves.
 Punching moves gain\npriority.
 Punching moves hit\ntwice.
 Reverses recoil and\nself-healing.
-Boosts Defense when\nhit by a Bug-type move.
+Boosts Defense when hit\nby a Bug-type move.
 Normal-type moves become\nPsychic-type and powered.
 Bounces back\nstat-lowering effects.
 Catches prey via Surf or Dive\nand spits it out when hit.

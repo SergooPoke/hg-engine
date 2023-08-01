@@ -1352,9 +1352,9 @@ The foe’s {STRVAR_1 1, 0, 0}’s\nillusion faded!
 {STRVAR_1 1, 0, 0}’s disguise was busted!
 The wild {STRVAR_1 1, 0, 0}’s disguise was\nbusted!
 The foe’s {STRVAR_1 1, 0, 0}’s disguise was\nbusted!
-{STRVAR_1 1, 0, 0}’s ice face shattered!
-The wild {STRVAR_1 1, 0, 0}’s ice face\nshattered!
-The foe’s {STRVAR_1 1, 0, 0}’s ice face\nshattered!
+{STRVAR_1 1, 0, 0}’s metal head shattered!
+The wild {STRVAR_1 1, 0, 0}’s metal head\nshattered!
+The foe’s {STRVAR_1 1, 0, 0}’s metal head\nshattered!
 {STRVAR_1 1, 0, 0}’s ice face was restored!
 The wild {STRVAR_1 1, 0, 0}’s ice face was\nrestored!
 The foe’s {STRVAR_1 1, 0, 0}’s ice face was\nrestored!
