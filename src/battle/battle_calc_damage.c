@@ -147,6 +147,21 @@ static const u16 BulletproofMovesTable[] = { //for super blaster
     MOVE_ZAP_CANNON
 };
 
+static const u16 DancerMovesTable[] = {
+    MOVE_AQUA_STEP,
+    MOVE_CLANGOROUS_SOUL,
+    MOVE_DRAGON_DANCE,
+    MOVE_FEATHER_DANCE,
+    MOVE_FIERY_DANCE,
+    MOVE_LUNAR_DANCE,
+    MOVE_PETAL_DANCE,
+    MOVE_REVELATION_DANCE,
+    MOVE_QUIVER_DANCE,
+    MOVE_SWORDS_DANCE,
+    MOVE_TEETER_DANCE,
+    MOVE_VICTORY_DANCE,
+};
+
 static const u16 SharpnessMovesTable[] = {
         MOVE_AERIAL_ACE,
         MOVE_AIR_CUTTER,
@@ -804,6 +819,16 @@ int CalcBaseDamage(void *bw, struct BattleStruct *sp, int moveno, u32 side_cond,
     if((AttackingMon.ability == ABILITY_WATER_BUBBLE) && (movetype == TYPE_WATER))
     {
         movepower = movepower * 2;
+    }
+    
+    // ATTEMPT at performer
+    for (i = 0; i < NELEMS(DancerMovesTable); i++)
+    {
+        if ((DancerMovesTable[i] == moveno) && (AttackingMon.ability == ABILITY_DANCER))
+        {
+            movepower = movepower * 75 / 100;
+            break;
+        }
     }
 
     // handle weather boosts

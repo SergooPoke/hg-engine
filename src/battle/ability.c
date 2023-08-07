@@ -90,6 +90,21 @@ const u16 PowderMoveList[] = {
     MOVE_SPORE,
 };
 
+const u16 DancerMoveList[] = { //for performer
+    MOVE_AQUA_STEP,
+    MOVE_CLANGOROUS_SOUL,
+    MOVE_DRAGON_DANCE,
+    MOVE_FEATHER_DANCE,
+    MOVE_FIERY_DANCE,
+    MOVE_LUNAR_DANCE,
+    MOVE_PETAL_DANCE,
+    MOVE_REVELATION_DANCE,
+    MOVE_QUIVER_DANCE,
+    MOVE_SWORDS_DANCE,
+    MOVE_TEETER_DANCE,
+    MOVE_VICTORY_DANCE,
+};
+
 int MoveCheckDamageNegatingAbilities(struct BattleStruct *sp, int attacker, int defender)
 {
     int scriptnum = 0;
