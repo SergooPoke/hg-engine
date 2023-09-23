@@ -634,37 +634,37 @@ int CalcBaseDamage(void *bw, struct BattleStruct *sp, int moveno, u32 side_cond,
     // handle aerilate - 20% boost if a normal type move was changed to a flying type move.  does not boost flying type moves themselves
     if (GetBattlerAbility(sp, attacker) == ABILITY_AERILATE && movetype == TYPE_FLYING && sp->moveTbl[moveno].type == TYPE_NORMAL)
     {
-        movepower = movepower * 130 / 100; //gen 6 boost
+        movepower = movepower * 120 / 100;
     }
 
     // handle pixilate - 20% boost if a normal type move was changed to a fairy type move.  does not boost fairy type moves themselves
     if (GetBattlerAbility(sp, attacker) == ABILITY_PIXILATE && movetype == TYPE_FAIRY && sp->moveTbl[moveno].type == TYPE_NORMAL)
     {
-        movepower = movepower * 130 / 100; //gen 6 boost
+        movepower = movepower * 120 / 100;
     }
 
     // handle galvanize - 20% boost if a normal type move was changed to an electric type move.  does not boost electric type moves themselves
     if (GetBattlerAbility(sp, attacker) == ABILITY_GALVANIZE && movetype == TYPE_ELECTRIC && sp->moveTbl[moveno].type == TYPE_NORMAL)
     {
-        movepower = movepower * 130 / 100; //gen 6 boost
+        movepower = movepower * 120 / 100;
     }
     
     // handle refrigerate - 20% boost if a normal type move was changed to an ice type move.  does not boost ice type moves themselves
     if (GetBattlerAbility(sp, attacker) == ABILITY_REFRIGERATE && movetype == TYPE_ICE && sp->moveTbl[moveno].type == TYPE_NORMAL)
     {
-        movepower = movepower * 130 / 100; //gen 6 boost
+        movepower = movepower * 120 / 100;
     }
 
     // handle psychonate
     if (GetBattlerAbility(sp, attacker) == ABILITY_PROPELLER_TAIL && movetype == TYPE_PSYCHIC && sp->moveTbl[moveno].type == TYPE_NORMAL)
     {
-        movepower = movepower * 130 / 100; //gen 6 boost
+        movepower = movepower * 120 / 100;
     }
     
     // handle normalize - 20% boost if a normal type move is used (and it changes types to normal too)
     if (GetBattlerAbility(sp, attacker) == ABILITY_NORMALIZE && movetype == TYPE_NORMAL)
     {
-        movepower = movepower * 130 / 100; //gen 6 boost
+        movepower = movepower * 120 / 100;
     }
 
     // handle heatproof/dry skin
