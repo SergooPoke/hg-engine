@@ -3987,7 +3987,7 @@ BOOL __attribute__((long_call)) AddWildPartyPokemon(int inTarget, EncounterInfo 
     u8 change_form = 0;
     u8 form_no;
     u16 species;
-
+    
     if (encounterInfo->isEgg == 0 && encounterInfo->ability == ABILITY_COMPOUND_EYES)
     {
         range = 1;
@@ -4020,7 +4020,24 @@ BOOL __attribute__((long_call)) AddWildPartyPokemon(int inTarget, EncounterInfo 
         ClearScriptFlag(HIDDEN_ABILITIES_FLAG);
         ResetPartyPokemonAbility(encounterPartyPokemon);
     }
+    //cherrygrove beedrill flag
+    u8 iv = 0;
+    u16 item = ITEM_IRON_BALL;
+    u16 ability = ABILITY_DEFEATIST;
+    
+    if (CheckScriptFlag(2602) == 1) { //ty dray and lhea
+      SetMonData(encounterPartyPokemon, MON_DATA_HP_IV, &iv);
+      SetMonData(encounterPartyPokemon, MON_DATA_ATK_IV, &iv);
+      SetMonData(encounterPartyPokemon, MON_DATA_DEF_IV, &iv);
+      SetMonData(encounterPartyPokemon, MON_DATA_SPEED_IV, &iv);
+      SetMonData(encounterPartyPokemon, MON_DATA_SPATK_IV, &iv);
+      SetMonData(encounterPartyPokemon, MON_DATA_SPDEF_IV, &iv);
+      SetMonData(encounterPartyPokemon, MON_DATA_HELD_ITEM, &item);
+      SetMonData(encounterPartyPokemon, MON_DATA_ABILITY, &ability);
 
+      ClearScriptFlag(2602);
+    }
+        
     if (change_form)
     {
         SetMonData(encounterPartyPokemon, MON_DATA_FORM, (u8 *)&form_no);
