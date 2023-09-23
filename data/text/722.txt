@@ -79,7 +79,7 @@ Raises evasion if the\nPokémon is confused.
 Raises Speed if hit by an\nElectric-type move.
 Raises Attack if the foe\nis of the same gender.
 Raises Speed each time\nthe Pokémon flinches.
-Boosts Ice-type moves’\npower in a snowstorm.
+Raises evasion in a\nsnowstorm.
 Encourages the early use\nof a held Berry.
 Raises Attack upon\ntaking a critical hit.
 Raises Speed if a held\nitem is used.
@@ -184,9 +184,9 @@ Normal-type moves become\nFairy-type and powered up.
 Contact with it lowers the\nattacker’s Speed stat.
 Normal-type moves become\nFlying-type and power up.
 Parent and child\neach attacks.
-Powers up each\nPokémon’s Dark-type moves.
-Powers up each\nPokémon’s Fairy-type moves.
-The effects of “Aura”\nAbilities are reversed.
+Nullifies the effects of\nall other Abilities.
+Enables the Pokémon to\nmove first occasionally.
+Powers up\nElectric-type moves.
 Changes the weather\nto nullify Fire-type moves.
 Changes the weather\nto nullify Water-type moves.
 Alters weather to\nremove Flying-type’s weaknesses.
@@ -214,30 +214,30 @@ It can poison Steel- and\nPoison-type targets.
 It’s always drowsing,\nand attacks without waking.
 Makes foes unable to\nuse priority attacks.
 Damages an attacker that\nlands the finishing hit.
-Uses dancing moves twice\nfor double the PP.
+Repeats another Pokémon’s\ndance move immediately.
 Powers up ally\nPokémon’s special moves.
 Resists contact damage\nbut weaker to Fire-type.
 Makes foes unable to\nuse priority attacks.
 Boosts Sp. Atk each\ntime a Pokémon faints.
 Contact with it lowers\nthe attacker’s Speed.
-Copies the Ability of\na defeated ally.
-Copies the Ability of\na defeated ally.
-Boosts its best stat\neach time it deals a KO.
-Its type matches\nthe memory disc it holds.
-Turns the ground\ninto Electric Terrain.
-Turns the ground\ninto Psychic Terrain.
-Turns the ground\ninto Misty Terrain.
-Turns the ground\ninto Grassy Terrain.
-Prevents other Pokémon\nfrom lowering its stats.
-Resists damage while\nits HP is full.
-Reduces damage from\nsuper-effective attacks.
-Powers up moves that\nare super-effective.
+Powers up\nDragon-type moves.
+After eating a Berry,\nit’s eaten again next turn.
+Powers up\nslicing moves.
+Ups Attack and Sp. Atk\nif allies were defeated.
+Makes foes unable to\nuse priority attacks.
 Boosts the power of\nkicking moves.
 Punching moves gain\npriority.
+Uses dancing moves twice\nfor double the PP.
 Punching moves hit\ntwice.
+Boosts Ice-type moves’\npower in a snowstorm.
 Reverses recoil and\nself-healing.
+Powers up moves that\nare super-effective.
 Boosts Defense when hit\nby a Bug-type move.
 Normal-type moves become\nPsychic-type and powered.
+It changes type to that\nof the move it’s about to use.
+Retrieves the first\nthrown Poké Ball if it failed.
+Scatters Speed-lowering\ncotton fluff when hit.
+This Pokémon’s\nmoves cannot be redirected.
 Bounces back\nstat-lowering effects.
 Catches prey via Surf or Dive\nand spits it out when hit.
 This Pokémon’s moves\ncannot be redirected.

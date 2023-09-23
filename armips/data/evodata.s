@@ -1835,7 +1835,7 @@ evodata SPECIES_MEW
     terminateevodata
 
 evodata SPECIES_CHIKORITA
-    evolution EVO_LEVEL, 16, SPECIES_BAYLEEF
+    evolution EVO_LEVEL, 7, SPECIES_BAYLEEF //16
     evolution EVO_NONE, 0, SPECIES_NONE
     evolution EVO_NONE, 0, SPECIES_NONE
     evolution EVO_NONE, 0, SPECIES_NONE

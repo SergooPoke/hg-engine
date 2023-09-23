@@ -212,6 +212,15 @@ int MoveCheckDamageNegatingAbilities(struct BattleStruct *sp, int attacker, int 
             scriptnum = SUB_SEQ_ABILITY_HP_RESTORE;
         }
     }
+    
+    // handle insecticide
+    if (MoldBreakerAbilityCheck(sp, attacker, defender, ABILITY_INSECTICIDE) == TRUE) //currently sub_seq 345
+    {
+        if ((movetype == TYPE_BUG) && (attacker != defender))
+        {
+            scriptnum = SUB_SEQ_HANDLE_INSECTICIDE;
+        }
+    }
 
     // handle sap sipper
     if (MoldBreakerAbilityCheck(sp, attacker, defender, ABILITY_SAP_SIPPER) == TRUE)

@@ -138,8 +138,8 @@ pokemon SPECIES_PIDGEY
 // day encounter slots
 pokemon SPECIES_EISCUE //pidgey
 pokemon SPECIES_NINJASK //sentret
-pokemon SPECIES_PIDGEY
-pokemon SPECIES_SENTRET
+pokemon SPECIES_CROAGUNK //pidgey
+pokemon SPECIES_CROAGUNK //sentret
 pokemon SPECIES_PIDGEY
 pokemon SPECIES_PIDGEY
 pokemon SPECIES_SENTRET

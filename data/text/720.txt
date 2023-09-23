@@ -79,7 +79,7 @@ Tangled Feet
 Motor Drive
 Rivalry
 Steadfast
-Snow Force
+Snow Cloak
 Gluttony
 Anger Point
 Unburden
@@ -184,9 +184,9 @@ Pixilate
 Gooey
 Aerilate
 Parental Bond
-Dark Aura
-Fairy Aura
-Aura Break
+Neutral Gas
+Quick Draw
+Transistor
 Primordial Sea
 Desolate Land
 Delta Stream
@@ -214,30 +214,30 @@ Corrosion
 Comatose
 Queenly Majesty
 Innards Out
-Performer
+Dancer
 Battery
 Fluffy
 Dazzling
 Soul-Heart
 Tangling Hair
-Receiver
-Power of Alchemy
-Beast Boost
-RKS System
-Electric Surge
-Psychic Surge
-Misty Surge
-Grassy Surge
-Full Metal Body
-Shadow Shield
-Prism Armor
-Neuroforce
+Dragon’s Maw
+Cud Chew
+Sharpness
+Overlord
+Armor Tail
 Striker
 Blitz Boxer
+Performer
 Tenacious
+Snow Force
 Antithetical
+Neuroforce
 Insecticide
 Psychonate
+Libero
+Ball Fetch
+Cotton Down
+Propeller Tail
 Mirror Armor
 Gulp Missile
 Stalwart

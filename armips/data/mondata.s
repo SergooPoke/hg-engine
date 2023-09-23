@@ -3391,7 +3391,7 @@ mondata SPECIES_BAYLEEF, "Bayleef"
     basefriendship 70
     growthrate GROWTH_MEDIUM_SLOW
     egggroups EGG_GROUP_MONSTER, EGG_GROUP_GRASS
-    abilities ABILITY_COTTON_DOWN, ABILITY_NONE //overgrow
+    abilities ABILITY_PSYCHONATE, ABILITY_NONE //overgrow
     runchance 0
     colorflip BODY_COLOR_GREEN, 0
     tmdata SPECIES_BAYLEEF_TM_DATA_0, SPECIES_BAYLEEF_TM_DATA_1, SPECIES_BAYLEEF_TM_DATA_2, SPECIES_BAYLEEF_TM_DATA_3

@@ -193,9 +193,9 @@
 #define ABILITY_GOOEY 183
 #define ABILITY_AERILATE 184
 #define ABILITY_PARENTAL_BOND 185
-#define ABILITY_DARK_AURA 186
-#define ABILITY_FAIRY_AURA 187
-#define ABILITY_AURA_BREAK 188
+#define ABILITY_DARK_AURA 310 //310 replaced by NEUTRALIZING_GAS
+#define ABILITY_FAIRY_AURA 311 //311 replaced by QUICK_DRAW
+#define ABILITY_AURA_BREAK 312 //312 replaced by TRANSISTOR
 #define ABILITY_PRIMORDIAL_SEA 189
 #define ABILITY_DESOLATE_LAND 190
 #define ABILITY_DELTA_STREAM 191
@@ -218,8 +218,8 @@
 #define ABILITY_GALVANIZE 206
 #define ABILITY_SURGE_SURFER 207
 #define ABILITY_SCHOOLING 208
-#define ABILITY_DISGUISE 209
-#define ABILITY_BATTLE_BOND 210
+#define ABILITY_DISGUISE 209 
+#define ABILITY_BATTLE_BOND 210 
 #define ABILITY_POWER_CONSTRUCT 211
 #define ABILITY_CORROSION 212
 #define ABILITY_COMATOSE 213
@@ -231,22 +231,22 @@
 #define ABILITY_DAZZLING 219
 #define ABILITY_SOUL_HEART 220
 #define ABILITY_TANGLING_HAIR 221
-#define ABILITY_RECEIVER 222
-#define ABILITY_POWER_OF_ALCHEMY 223
-#define ABILITY_BEAST_BOOST 224
-#define ABILITY_RKS_SYSTEM 225
-#define ABILITY_ELECTRIC_SURGE 226
-#define ABILITY_PSYCHIC_SURGE 227
-#define ABILITY_MISTY_SURGE 228
-#define ABILITY_GRASSY_SURGE 229
-#define ABILITY_FULL_METAL_BODY 230
-#define ABILITY_SHADOW_SHIELD 231
-#define ABILITY_PRISM_ARMOR 232
+#define ABILITY_RECEIVER 313 //313 replaced by DRAGONS_MAW
+#define ABILITY_POWER_OF_ALCHEMY 314 //314 replaced by CUD_CHEW
+#define ABILITY_BEAST_BOOST 315 //315 replaced by SHAPRNESS
+#define ABILITY_RKS_SYSTEM 316 //316 replaced by SUPREME_OVERLORD
+#define ABILITY_ELECTRIC_SURGE 317 //317 replaced by ARMOR_TAIL
+#define ABILITY_PSYCHIC_SURGE 318 //318 replaced by STRIKER
+#define ABILITY_MISTY_SURGE 319 //319 replaced by BLITZ_BOXER
+#define ABILITY_GRASSY_SURGE 320 //320 replaced by PERFORMER
+#define ABILITY_FULL_METAL_BODY 321 //321 replaced by TENACIOUS
+#define ABILITY_SHADOW_SHIELD 322 //322 replaced by SNOW FORCE
+#define ABILITY_PRISM_ARMOR 323 //323 replaced by ANTITHETICAL
 #define ABILITY_NEUROFORCE 233
 
 // gen 8
-#define ABILITY_INTREPID_SWORD 234
-#define ABILITY_DAUNTLESS_SHIELD 235
+#define ABILITY_INTREPID_SWORD 324 //324 replaced by INSECTICIDE
+#define ABILITY_DAUNTLESS_SHIELD 325 //325 replaced by PSYCHONATE
 #define ABILITY_LIBERO 236
 #define ABILITY_BALL_FETCH 237
 #define ABILITY_COTTON_DOWN 238
@@ -267,14 +267,14 @@
 #define ABILITY_PERISH_BODY 253
 #define ABILITY_WANDERING_SPIRIT 254
 #define ABILITY_GORILLA_TACTICS 255
-#define ABILITY_NEUTRALIZING_GAS 256
+#define ABILITY_NEUTRALIZING_GAS 186 //186 (originally 256)
 #define ABILITY_PASTEL_VEIL 257
 #define ABILITY_HUNGER_SWITCH 258
-#define ABILITY_QUICK_DRAW 259
+#define ABILITY_QUICK_DRAW 187 //187 (originally 259)
 #define ABILITY_UNSEEN_FIST 260
 #define ABILITY_CURIOUS_MEDICINE 261
-#define ABILITY_TRANSISTOR 262
-#define ABILITY_DRAGONS_MAW 263
+#define ABILITY_TRANSISTOR 188 //188 (originally 262)
+#define ABILITY_DRAGONS_MAW 222 //222 (originally 263)
 #define ABILITY_CHILLING_NEIGH 264
 #define ABILITY_GRIM_NEIGH 265
 #define ABILITY_AS_ONE_GLASTRIER 266
@@ -304,41 +304,29 @@
 #define ABILITY_ORICHALCUM_PULSE 288
 #define ABILITY_HADRON_ENGINE 289
 #define ABILITY_OPPORTUNIST 290
-#define ABILITY_CUD_CHEW 291
-#define ABILITY_SHARPNESS 292
-#define ABILITY_SUPREME_OVERLORD 293
+#define ABILITY_CUD_CHEW 223 //223 (originally 291)
+#define ABILITY_SHARPNESS 224 //224 (originally 292)
+#define ABILITY_SUPREME_OVERLORD 225 //225 (originally 293)
 #define ABILITY_COSTAR 294
 #define ABILITY_TOXIC_DEBRIS 295
-#define ABILITY_ARMOR_TAIL 296
+#define ABILITY_ARMOR_TAIL 226 //226 (originally 296)
 #define ABILITY_EARTH_EATER 297
 #define ABILITY_MYCELIUM_MIGHT 298
 
-//new abilities. the problem with these is that apparently abilities only go up to 255, so a few pre-gen 8 abilities are gonna have to be swapped
-#define ABILITY_STRIKER 310
-#define ABILITY_BLITZ_BOXER 311
-#define ABILITY_PERFORMER 312
-#define ABILITY_TENACIOUS 313
-#define ABILITY_SNOW_FORCE 314
-#define ABILITY_AMPLIFIER 315
-#define ABILITY_SUPER_BLASTER 316
-#define ABILITY_ANTITHETICAL 317
-#define ABILITY_INSECTICIDE 318
-#define ABILITY_PSYCHONATE 319
-#define ABILITY_SPICE_GIFT 320
-#define ABILITY_METAL_HEAD 321
-#define ABILITY_ALPHA_SURGE 322
+//new abilities
+#define ABILITY_STRIKER 227 //227 (originally 310)
+#define ABILITY_BLITZ_BOXER 228 //228 (originally 311)
+#define ABILITY_PERFORMER 229 //229 (originally 312)
+#define ABILITY_TENACIOUS 230 //230 (originally 313)
+#define ABILITY_SNOW_FORCE 231 //231 (originally 314)
+#define ABILITY_ANTITHETICAL 232 //232 (originally 315)
+//ability 233 is neuroforce
+#define ABILITY_INSECTICIDE 234 //234 (originally 316)
+#define ABILITY_PSYCHONATE 235 //235 (originally 317)
 
-//preeliminary list of replacements. feel free to change as you see fit, but bear in mind that i might have already written new code.
-//striker = intrepid sword
-//blitz boxer = dauntless shield
-//performer = dancer
-//tenacious = libero
-//snow force = snow cloak
+//list of replacements for the abilities that arent new entries
 //amplifier = punk rock
 //super blaster = mega launcher
-//antithetical = ball fetch
-//insecticide = cotton down
-//psychonate = propeller tail
 //spice gift = flower gift
 //metal head = ice face
 //alpha surge = schooling

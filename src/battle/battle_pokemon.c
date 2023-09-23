@@ -1288,6 +1288,10 @@ u32 GetAdjustedMoveTypeBasics(struct BattleStruct *sp, u32 move, u32 ability, u3
         {
             typeLocal = TYPE_ELECTRIC;
         }
+         else if (ability == ABILITY_PSYCHONATE)
+        {
+            typeLocal = TYPE_PSYCHIC;
+        }
         else // needs to be for sure initialized
         {
             typeLocal = TYPE_NORMAL;

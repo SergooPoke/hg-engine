@@ -704,7 +704,7 @@ u8 CalcSpeed(void *bw, struct BattleStruct *sp, int client1, int client2, int fl
             }
         }
         //blitz boxer implementation (hopefully)
-         if (GetBattlerAbility(sp, client1) == ABILITY_DAUNTLESS_SHIELD) {
+         if (GetBattlerAbility(sp, client1) == ABILITY_BLITZ_BOXER) {
             for (i = 0; i < NELEMS(IronFistMovesList); i++)
             {
                 if (IronFistMovesList[i] == move1) {
@@ -714,7 +714,7 @@ u8 CalcSpeed(void *bw, struct BattleStruct *sp, int client1, int client2, int fl
             }
         }
 
-        if (GetBattlerAbility(sp, client2) == ABILITY_DAUNTLESS_SHIELD) {
+        if (GetBattlerAbility(sp, client2) == ABILITY_BLITZ_BOXER) {
             for (i = 0; i < NELEMS(IronFistMovesList); i++)
             {
                 if (IronFistMovesList[i] == move2) {

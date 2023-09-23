@@ -666,7 +666,7 @@ int CalcBaseDamage(void *bw, struct BattleStruct *sp, int moveno, u32 side_cond,
     }
 
     // handle psychonate
-    if (GetBattlerAbility(sp, attacker) == ABILITY_PROPELLER_TAIL && movetype == TYPE_PSYCHIC && sp->moveTbl[moveno].type == TYPE_NORMAL)
+    if (GetBattlerAbility(sp, attacker) == ABILITY_PSYCHONATE && movetype == TYPE_PSYCHIC && sp->moveTbl[moveno].type == TYPE_NORMAL)
     {
         movepower = movepower * 120 / 100;
     }
@@ -778,7 +778,7 @@ int CalcBaseDamage(void *bw, struct BattleStruct *sp, int moveno, u32 side_cond,
     // handle striker hopefully
     for (i = 0; i < NELEMS(StrikerMovesTable); i++)
     {
-        if ((StrikerMovesTable[i] == moveno) && (AttackingMon.ability == ABILITY_INTREPID_SWORD))
+        if ((StrikerMovesTable[i] == moveno) && (AttackingMon.ability == ABILITY_STRIKER))
         {
             movepower = movepower * 13 / 10;
             break;
@@ -834,7 +834,7 @@ int CalcBaseDamage(void *bw, struct BattleStruct *sp, int moveno, u32 side_cond,
     // ATTEMPT at performer
     for (i = 0; i < NELEMS(DancerMovesTable); i++)
     {
-        if ((DancerMovesTable[i] == moveno) && (AttackingMon.ability == ABILITY_DANCER))
+        if ((DancerMovesTable[i] == moveno) && (AttackingMon.ability == ABILITY_PERFORMER))
         {
             movepower = movepower * 75 / 100;
             break;
@@ -872,9 +872,9 @@ int CalcBaseDamage(void *bw, struct BattleStruct *sp, int moveno, u32 side_cond,
         }
     }
 
-    //// halve the defense if using selfdestruct/explosion
-    //if (sp->moveTbl[moveno].effect == MOVE_EFFECT_HALVE_DEFENSE)
-    //    defense = defense / 2;
+    // halve the defense if using selfdestruct/explosion
+    if (sp->moveTbl[moveno].effect == MOVE_EFFECT_HALVE_DEFENSE)
+        defense = defense / 2;
 
     // handle physical moves
     if (movesplit == SPLIT_PHYSICAL)
@@ -1066,7 +1066,7 @@ int CalcBaseDamage(void *bw, struct BattleStruct *sp, int moveno, u32 side_cond,
             damage = damage * 130 / 100;
         }
         
-         if (AttackingMon.ability == ABILITY_SNOW_CLOAK // snow force hopefully
+         if (AttackingMon.ability == ABILITY_SNOW_FORCE // snow force hopefully
          && field_cond & WEATHER_HAIL_ANY
          && (movetype == TYPE_ICE))
         {
