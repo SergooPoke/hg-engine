@@ -32,4 +32,19 @@
 // DEBUG_SOUND_SBNK_LOADS prints out sseq loads from the SDAT and the free space left after the load.
 //#define DEBUG_SOUND_SBNK_LOADS
 
+// GUARANTEE_CAPTURES guarantees captures
+//#define GUARANTEE_CAPTURES
+
+// DEBUG_SQRT prints debug information for the gpio sqrt function
+//#define DEBUG_SQRT
+
+// DEBUG_PRINT_EXPERIENCE_VALUES prints debug information for experience outputs
+//#define DEBUG_PRINT_EXPERIENCE_VALUES
+
+// DEBUG_CAPTURE_RATE_PERCENTAGES prints debug information for capture rate
+//#define DEBUG_CAPTURE_RATE_PERCENTAGES
+
+// DEBUG_SERVER_QUEUE prints debug information about the status of the server queue when the waitmessage script command
+//#define DEBUG_SERVER_QUEUE
+
 #endif // DEBUG_H

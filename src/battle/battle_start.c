@@ -1,5 +1,6 @@
 #include "../../include/types.h"
 #include "../../include/battle.h"
+#include "../../include/item.h"
 #include "../../include/mega.h"
 #include "../../include/pokemon.h"
 #include "../../include/constants/ability.h"
@@ -15,6 +16,25 @@
 /********************************************************************************************************************/
 /********************************************************************************************************************/
 
+
+
+struct BattleStruct *ServerInit(void *bw)
+{
+    struct BattleStruct *sp;
+
+    sp = sys_AllocMemory(5, sizeof(struct BattleStruct));
+    memset(sp, 0, sizeof(struct BattleStruct));
+    BattleStructureInit(sp);
+    BattleStructureCounterInit(bw, sp);
+    ServerMoveAIInit(bw, sp);
+    DumpMoveTableData(&sp->moveTbl[0]);
+    sp->aiWorkTable.item = ItemDataTableLoad(5);
+
+    return sp;
+}
+
+
+
 enum
 {
     SBA_RESET_DEFIANT = 0,
@@ -26,15 +46,15 @@ enum
     SBA_END
 };
 
-u32	No2Bit(int no)
+u32 No2Bit(int no)
 {
-	int	i;
-	u32	ret=1;
+    int i;
+    u32 ret=1;
 
-	for(i=0;i<no;i++){
-		ret<<=1;
-	}
-	return ret;
+    for(i=0;i<no;i++){
+        ret<<=1;
+    }
+    return ret;
 }
 
 
@@ -89,7 +109,7 @@ void ServerBeforeAct(void *bw, struct BattleStruct *sp)
                     SCIO_BlankMessage(bw);
                     sp->client_work = client_no;
                     sp->battlemon[client_no].form_no = 1; // ?
-                    LoadBattleSubSeqScript(sp, FILE_BATTLE_SUB_SCRIPTS, SUB_SEQ_HANDLE_FOCUS_PUNCH);
+                    LoadBattleSubSeqScript(sp, ARC_BATTLE_SUB_SEQ, SUB_SEQ_FOCUS_PUNCH_START);
                     sp->next_server_seq_no = sp->server_seq_no;
                     sp->server_seq_no = 22;
                     return;
@@ -231,14 +251,14 @@ static BOOL MegaEvolution(void *bw, struct BattleStruct *sp)
             sp->client_work = client_no;
             if (CheckCanSpeciesMegaEvolveByMove(sp, client_no))
             {
-                LoadBattleSubSeqScript(sp, FILE_BATTLE_SUB_SCRIPTS, SUB_SEQ_HANDLE_MOVE_MEGA_EVOLUTION);
+                LoadBattleSubSeqScript(sp, ARC_BATTLE_SUB_SEQ, SUB_SEQ_HANDLE_MOVE_MEGA_EVOLUTION);
             }
             else
             {
-                LoadBattleSubSeqScript(sp, FILE_BATTLE_SUB_SCRIPTS, SUB_SEQ_HANDLE_MEGA_EVOLUTION); // load sequence 297 and execute
-	        }
+                LoadBattleSubSeqScript(sp, ARC_BATTLE_SUB_SEQ, SUB_SEQ_HANDLE_MEGA_EVOLUTION); // load sequence 297 and execute
+            }
             sp->next_server_seq_no = sp->server_seq_no;
-	        sp->server_seq_no = 22;
+            sp->server_seq_no = 22;
             return TRUE;
         }
         if(newBS.needMega[client_no] == MEGA_CHECK_APPER && sp->battlemon[sp->attack_client].hp)
@@ -247,9 +267,9 @@ static BOOL MegaEvolution(void *bw, struct BattleStruct *sp)
             seq = ST_ServerPokeAppearCheck(bw,sp);
             if(seq)
             {
-                LoadBattleSubSeqScript(sp, FILE_BATTLE_SUB_SCRIPTS, seq);
-	            sp->next_server_seq_no = sp->server_seq_no;
-	            sp->server_seq_no = 22;
+                LoadBattleSubSeqScript(sp, ARC_BATTLE_SUB_SEQ, seq);
+                sp->next_server_seq_no = sp->server_seq_no;
+                sp->server_seq_no = 22;
                 return TRUE;
             }
 
@@ -312,7 +332,7 @@ void ServerWazaBefore(void *bw, struct BattleStruct *sp)
                             break;
                     }
                     sp->server_seq_no = 22;
-                    LoadBattleSubSeqScript(sp, FILE_BATTLE_SUB_SCRIPTS, seq_no);
+                    LoadBattleSubSeqScript(sp, ARC_BATTLE_SUB_SEQ, seq_no);
                     return;
                 }
             }
@@ -357,7 +377,7 @@ void ServerWazaBefore(void *bw, struct BattleStruct *sp)
             {
                 sp->battlemon[sp->attack_client].type1 = sp->moveTbl[sp->current_move_index].type;
                 sp->battlemon[sp->attack_client].type2 = sp->moveTbl[sp->current_move_index].type;
-                LoadBattleSubSeqScript(sp, FILE_BATTLE_SUB_SCRIPTS, SUB_SEQ_HANDLE_PROTEAN_MESSAGE);
+                LoadBattleSubSeqScript(sp, ARC_BATTLE_SUB_SEQ, SUB_SEQ_HANDLE_PROTEAN_MESSAGE);
                 sp->msg_work = sp->battlemon[sp->attack_client].type1;
                 sp->client_work = sp->attack_client;
                 runMyScriptInstead = 1;
@@ -374,14 +394,14 @@ void ServerWazaBefore(void *bw, struct BattleStruct *sp)
                 {
                     sp->battlemon[sp->client_work].form_no = 0;
                     BattleFormChange(sp->client_work, sp->battlemon[sp->client_work].form_no, bw, sp, 0);
-                    LoadBattleSubSeqScript(sp, FILE_BATTLE_SUB_SCRIPTS, SUB_SEQ_HANDLE_FORM_CHANGE);
+                    LoadBattleSubSeqScript(sp, ARC_BATTLE_SUB_SEQ, SUB_SEQ_FORM_CHANGE);
                     runMyScriptInstead = 1;
                 }
                 else if (sp->moveTbl[sp->current_move_index].power != 0 && sp->battlemon[sp->attack_client].form_no == 0)
                 {
                     sp->battlemon[sp->client_work].form_no = 1;
                     BattleFormChange(sp->client_work, sp->battlemon[sp->client_work].form_no, bw, sp, 0);
-                    LoadBattleSubSeqScript(sp, FILE_BATTLE_SUB_SCRIPTS, SUB_SEQ_HANDLE_FORM_CHANGE);
+                    LoadBattleSubSeqScript(sp, ARC_BATTLE_SUB_SEQ, SUB_SEQ_FORM_CHANGE);
                     runMyScriptInstead = 1;
                 }
             }
@@ -402,7 +422,7 @@ void ServerWazaBefore(void *bw, struct BattleStruct *sp)
         sp->server_seq_no = 22; // execute protean OR the move
         if (runMyScriptInstead == 0)
         {
-            LoadBattleSubSeqScript(sp, FILE_MOVE_BATTLE_SCRIPTS, sp->current_move_index);
+            LoadBattleSubSeqScript(sp, ARC_BATTLE_MOVE_SEQ, sp->current_move_index);
             sp->next_server_seq_no = 24; // after that 
         }
         else // might want to move this else to be up before the NO_OUT check above

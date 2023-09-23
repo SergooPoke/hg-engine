@@ -51,7 +51,7 @@ ArchiveDataLoad = 0x02007509;
 ArchiveDataLoadMallocOfs = 0x0200757C | 1;
 NARC_ctor = 0x02007688 | 1;
 ArchiveDataLoadOfs = 0x02007560 | 1;
-sqrt = 0x0200048A | 1;
+/*sqrt = 0x0200048A | 1;*/
 
 /*Pokemon*/
 AllocMonZeroed = 0x0206DD2C | 1;
@@ -201,7 +201,7 @@ ChooseRandomTarget = 0x02253DA0 | 1;
 CountBattlerMoves = 0x02252EA8 | 1;
 AbilityStatusRecoverCheck = 0x022543A0 | 1;
 HeldItemHealCheck = 0x02254E7C | 1;
-LoadBattleSubSeqScript = 0x172DC + 0x022378C1;
+/*LoadBattleSubSeqScript = 0x172DC + 0x022378C1;*/
 HeldItemHoldEffectGet = 0x02255830 | 1;
 HeldItemAtkGet = 0x02255844 | 1;
 IsMovingAfterClient = 0x0225561C | 1;
@@ -211,14 +211,14 @@ BattleWorkBattleStatusFlagGet = 0x0223B514 | 1;
 PokeParaGiratinaFormChange = 0x02071CA0 | 1;
 SCIO_PSPtoPPCopy = 0x02263B4C | 1;
 SCIO_IncRecord = 0x02263F0C | 1;
-ST_ServerTokuseiStatusRecoverReshuffleCheck = 0x0225451C | 1;
-ST_ServerPressurePPDecCheck = 0x02258180 | 1;
-ST_ServerWazaPosGet = 0x02251C60 | 1;
-BattleWorkConfigWazaEffectOnOffCheck = 0x0223B6D4 | 1;
-SCIO_WazaEffectSet = 0x0226340C | 1;
-SCIO_WazaEffect2Set = 0x0226343C | 1;
+CheckStatusRecoverFromAbilityOnSwitch = 0x0225451C | 1;
+CheckPressureForPPDecrease = 0x02258180 | 1;
+GetBattlePokemonMovePosFromMove = 0x02251C60 | 1;
+CheckBattleAnimationsOption = 0x0223B6D4 | 1;
+SCIO_QueueMoveAnimation = 0x0226340C | 1;
+SCIO_QueueMoveAnimationConsiderAttackerDefender = 0x0226343C | 1;
 SkillSequenceGosub = 0x02245520 | 1;
-ServerKizetsuCheck = 0x0224DC74 | 1;
+CheckIfAnyoneShouldFaint = 0x0224DC74 | 1;
 Snd_BgmPlay = 0x02005D48 | 1;
 BattleWorkPinchSEFlagSet = 0x0223BD3C | 1;
 ST_ServerPokeOneSelfCheckActPP = 0x022568B0 | 1;
@@ -238,7 +238,7 @@ Battle_GetClientPartyMon = 0x0223a880 | 1;
 
 /*Battle Script Functions*/
 IncrementBattleScriptPtr = 0x02245508 | 1;
-read_battle_script_param = 0x022454E8 | 1;
+/*read_battle_script_param = 0x022454E8 | 1;*/
 TagNickParaMake = 0x022522E0 | 1;
 JumpToMoveEffectScript = 0x02245518 | 1;
 BGCallback_Waza = 0x0226748C | 1;
@@ -451,3 +451,15 @@ ST_ServerDir2ClientNoGet = 0x02257E98 | 1;
 /* tasks */
 CreateSysTask = 0x0200E320 | 1;
 DestroySysTask = 0x0200E390 | 1;
+
+BattleWorkClientParamGet = 0x0223A7E8 | 1;
+
+BattleStructureInit = 0x02250F44 | 1;
+BattleStructureCounterInit = 0x02251038 | 1;
+ServerMoveAIInit = 0x0224E384 | 1;
+DumpMoveTableData = 0x02073300 | 1;
+
+GF_ExpHeap_FndGetTotalFreeSize = 0x0201ABEC | 1;
+
+/*Link_QueueIsEmpty = 0x0224ED48 | 1;*/
+Link_CheckTimeout = 0x0224ED9C | 1;
