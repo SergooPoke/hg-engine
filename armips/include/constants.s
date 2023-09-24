@@ -104,8 +104,10 @@ EVO_AMOUNT_OF_CRITICAL_HITS      equ 36
 EVO_HURT_IN_BATTLE_AMOUNT        equ 37
 //EVO_DARK_SCROLL  // implemented through an item use forme-change-esque cut scene
 //EVO_WATER_SCROLL // implemented through an item use forme-change-esque cut scene
-//EVO_CLOSE_DS                   equ 40
-//EVO_AMOUNT_OF_BURN_TURNS       equ 41
+EVO_LEVEL_FIGHTING_TYPE_MON_IN_PARTY equ 38
+EVO_LEVEL_GHOST_TYPE_MON_IN_PARTY equ 39
+//EVO_CLOSE_DS                   equ 42
+//EVO_AMOUNT_OF_BURN_TURNS       equ 43
 
 // shadow size constants
 

@@ -2003,7 +2003,7 @@ evodata SPECIES_LEDYBA
     terminateevodata
 
 evodata SPECIES_LEDIAN
-    evolution EVO_NONE, 0, SPECIES_NONE
+    evolution EVO_LEVEL_FIGHTING_TYPE_MON_IN_PARTY, 30, SPECIES_LEDIDER
     evolution EVO_NONE, 0, SPECIES_NONE
     evolution EVO_NONE, 0, SPECIES_NONE
     evolution EVO_NONE, 0, SPECIES_NONE

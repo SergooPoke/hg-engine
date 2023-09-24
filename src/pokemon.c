@@ -3750,6 +3750,36 @@ u16 __attribute__((long_call)) GetMonEvolution(struct Party *party, struct Party
                     }
                 }
                 break;
+            case EVO_LEVEL_FIGHTING_TYPE_MON_IN_PARTY: //ledider
+                if (evoTable[i].param <= level && party != NULL)
+                {
+                    for (int k = 0; k < 6; k++)
+                    {
+                        if (!CheckIfMonsAreEqual(pokemon, PokeParty_GetMemberPointer(party, k)) // make sure that pancham doesn't satisfy its own requirement //idk lol
+                         && (GetMonData(PokeParty_GetMemberPointer(party, k), MON_DATA_TYPE_1, NULL) == TYPE_FIGHTING || GetMonData(PokeParty_GetMemberPointer(party, k), MON_DATA_TYPE_2, NULL) == TYPE_FIGHTING)) // if either type is fight then set evolution
+                        {
+                            GET_TARGET_AND_SET_FORM;
+                            *method_ret = EVO_LEVEL_FIGHTING_TYPE_MON_IN_PARTY;
+                            break;
+                        }
+                    }
+                }
+                break;
+            case EVO_LEVEL_GHOST_TYPE_MON_IN_PARTY: //spideath
+                if (evoTable[i].param <= level && party != NULL)
+                {
+                    for (int k = 0; k < 6; k++)
+                    {
+                        if (!CheckIfMonsAreEqual(pokemon, PokeParty_GetMemberPointer(party, k)) // make sure that pancham doesn't satisfy its own requirement //idk lol
+                         && (GetMonData(PokeParty_GetMemberPointer(party, k), MON_DATA_TYPE_1, NULL) == TYPE_GHOST || GetMonData(PokeParty_GetMemberPointer(party, k), MON_DATA_TYPE_2, NULL) == TYPE_GHOST)) // if either type is ghost then set evolution
+                        {
+                            GET_TARGET_AND_SET_FORM;
+                            *method_ret = EVO_LEVEL_GHOST_TYPE_MON_IN_PARTY;
+                            break;
+                        }
+                    }
+                }
+                break;
             case EVO_LEVEL_NATURE_LOW_KEY:
                 lowkey = 1;
             case EVO_LEVEL_NATURE_AMPED:

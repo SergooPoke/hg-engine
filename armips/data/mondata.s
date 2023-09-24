@@ -10267,7 +10267,7 @@ mondata SPECIES_TANGROWTH, "Tangrowth"
 
 mondata SPECIES_ELECTIVIRE, "Electivire"
     basestats 75, 123, 67, 95, 95, 85
-    types TYPE_ELECTRIC, TYPE_ELECTRIC
+    types TYPE_ELECTRIC, TYPE_FIGHTING
     catchrate 30
     baseexp 0 // defined in baseexp.s
     evyields 0, 3, 0, 0, 0, 0
@@ -23552,6 +23552,26 @@ mondata SPECIES_TERAPAGOS, "-----"
     mondexheight SPECIES_TERAPAGOS, "???’??”"
     mondexweight SPECIES_TERAPAGOS, "????.? lbs."
 
+mondata SPECIES_LEDIDER, "Ledider"
+    basestats 65, 85, 90, 100, 35, 115
+    types TYPE_BUG, TYPE_FIGHTING
+    catchrate 90 //todo
+    baseexp 0 // defined in baseexp.s
+    evyields 0, 0, 0, 0, 0, 3
+    items ITEM_NONE, ITEM_NONE
+    genderratio 127
+    eggcycles 15
+    basefriendship 70
+    growthrate GROWTH_FAST
+    egggroups EGG_GROUP_BUG, EGG_GROUP_BUG
+    abilities ABILITY_SWARM, ABILITY_EARLY_BIRD
+    runchance 0
+    colorflip BODY_COLOR_RED, 0
+    tmdata SPECIES_LEDIDER_TM_DATA_0, SPECIES_LEDIDER_TM_DATA_1, SPECIES_LEDIDER_TM_DATA_2, SPECIES_LEDIDER_TM_DATA_3
+    mondexentry SPECIES_LEDIDER, "todo"
+    mondexclassification SPECIES_LEDIDER, "Heroic Pokémon"
+    mondexheight SPECIES_LEDIDER, "4’07”" //todo
+    mondexweight SPECIES_LEDIDER, "178.5 lbs." //todo
 
 mondata SPECIES_MEGA_VENUSAUR, "-----"
     basestats 80,100,123,80,122,120

@@ -1076,6 +1076,7 @@
 /* SPECIES_MUNKIDORI                   */ .halfword ABILITY_NONE
 /* SPECIES_FEZANDIPITI                 */ .halfword ABILITY_NONE
 /* SPECIES_TERAPAGOS                   */ .halfword ABILITY_NONE
+/* SPECIES_LEDIDER                     */ .halfword ABILITY_IRON_FIST //todo
 
 /* SPECIES_MEGA_VENUSAUR               */ .halfword ABILITY_NONE
 /* SPECIES_MEGA_CHARIZARD_X            */ .halfword ABILITY_NONE

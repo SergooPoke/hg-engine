@@ -1075,6 +1075,7 @@
 /* SPECIES_MUNKIDORI                   */ .halfword 0
 /* SPECIES_FEZANDIPITI                 */ .halfword 0
 /* SPECIES_TERAPAGOS                   */ .halfword 0
+/* SPECIES_LEDIDER                     */ .halfword 137 //todo
 
 /* SPECIES_MEGA_VENUSAUR               */ .halfword 313
 /* SPECIES_MEGA_CHARIZARD_X            */ .halfword 317
