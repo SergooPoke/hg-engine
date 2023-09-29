@@ -79,7 +79,7 @@ NARC_FILES += $(OPENDEMO_NARC)
 MONDATA_DIR := $(BUILD)/a002
 MONDATA_NARC := $(BUILD_NARC)/mondata.narc
 MONDATA_TARGET := $(FILESYS)/a/0/0/2
-MONDATA_DEPENDENCIES := armips/data/mondata.s
+MONDATA_DEPENDENCIES := armips/data/mondata.s armips/data/tmlearnset.txt
 MONDATA_NAMES_DIR := $(BUILD)/rawtext/237 $(BUILD)/rawtext/238 $(BUILD)/rawtext/817
 MONDATA_DESCRIPTIONS_DIR := $(BUILD)/rawtext/803
 MONDATA_CLASSIFICATIONS_DIR := $(BUILD)/rawtext/816
@@ -88,7 +88,8 @@ MONDATA_WEIGHTS_DIR := $(BUILD)/rawtext/812 $(BUILD)/rawtext/813
 
 $(MONDATA_NARC): $(MONDATA_DEPENDENCIES)
 	mkdir -p $(MONDATA_DIR) $(MONDATA_NAMES_DIR) $(MONDATA_DESCRIPTIONS_DIR) $(MONDATA_CLASSIFICATIONS_DIR) $(MONDATA_HEIGHTS_DIR) $(MONDATA_WEIGHTS_DIR)
-	$(ARMIPS) $^
+	$(ARMIPS) armips/data/mondata.s
+	$(PYTHON) scripts/tm_learnset.py armips/data/tmlearnset.txt
 	$(NARCHIVE) create $@ $(MONDATA_DIR) -nf
 
 NARC_FILES += $(MONDATA_NARC)
@@ -578,3 +579,17 @@ $(PW_POKEICON_NARC): $(PW_POKEICON_OBJS)
 	$(NARCHIVE) create $@ $(PW_POKEICON_DIR) -nf
 
 NARC_FILES += $(PW_POKEICON_NARC)
+
+
+SCR_SEQ_DIR := $(BUILD)/a012
+SCR_SEQ_NARC := $(BUILD_NARC)/scr_seq.narc
+SCR_SEQ_TARGET := $(FILESYS)/a/0/1/2
+SCR_SEQ_DEPENDENCIES_DIR := armips/scr_seq
+SCR_SEQ_DEPENDENCIES := $(SCR_SEQ_DEPENDENCIES_DIR)/*
+
+$(SCR_SEQ_NARC): $(SCR_SEQ_DEPENDENCIES)
+	$(NARCHIVE) extract $(SCR_SEQ_TARGET) -o $(SCR_SEQ_DIR) -nf
+	for file in $^; do $(ARMIPS) $$file; done
+	$(NARCHIVE) create $@ $(SCR_SEQ_DIR) -nf
+
+NARC_FILES += $(SCR_SEQ_NARC)

@@ -150,6 +150,7 @@ all: $(OUTPUT) $(BATTLE_OUTPUT) $(FIELD_OUTPUT)
 	@echo -e "$(ROMNAME) Decompression successful!!"
 	$(NARCHIVE) extract $(FILESYS)/a/0/2/8 -o $(BUILD)/a028/ -nf
 	$(PYTHON) scripts/make.py
+	$(PYTHON) scripts/tm_learnset.py --writetmlist armips/data/tmlearnset.txt
 	$(ARMIPS) armips/global.s
 	$(MAKE) move_narc
 	$(NARCHIVE) create $(FILESYS)/a/0/2/8 $(BUILD)/a028/ -nf
@@ -346,6 +347,9 @@ move_narc: $(NARC_FILES)
 
 	@echo "textbox:"
 	if [ $$(grep -i -c "//#define IMPLEMENT_TRANSPARENT_TEXTBOXES" include/config.h) -eq 0 ]; then cp $(TEXTBOX_NARC) $(TEXTBOX_TARGET); fi
+
+	@echo "scripts:"
+	cp $(SCR_SEQ_NARC) $(SCR_SEQ_TARGET)
 
 
 	@echo "baby mons:"
