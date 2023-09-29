@@ -335,7 +335,7 @@
 /* SPECIES_SPINDA                      */ .halfword 126
 /* SPECIES_TRAPINCH                    */ .halfword 58
 /* SPECIES_VIBRAVA                     */ .halfword 119
-/* SPECIES_FLYGON                      */ .halfword 260
+/* SPECIES_FLYGON                      */ .halfword 300
 /* SPECIES_CACNEA                      */ .halfword 67
 /* SPECIES_CACTURNE                    */ .halfword 166
 /* SPECIES_SWABLU                      */ .halfword 62
@@ -1075,7 +1075,26 @@
 /* SPECIES_MUNKIDORI                   */ .halfword 0
 /* SPECIES_FEZANDIPITI                 */ .halfword 0
 /* SPECIES_TERAPAGOS                   */ .halfword 0
-/* SPECIES_LEDIDER                     */ .halfword 137 //todo
+/* SPECIES_SPEKTRE                     */ .halfword 250
+/* SPECIES_NITEMUR                     */ .halfword 263
+/* SPECIES_LICKIDRULE                  */ .halfword 180
+/* SPECIES_AFROSTITE                   */ .halfword 270
+/* SPECIES_LEDIDER                     */ .halfword 169
+/* SPECIES_SPIDEATH                    */ .halfword 169
+/* SPECIES_FALREST                     */ .halfword 179
+/* SPECIES_GIGATOBULL                  */ .halfword 265
+/* SPECIES_LIQWILDATE                  */ .halfword 179
+/* SPECIES_CURESOLA                    */ .halfword 179
+/* SPECIES_TAKORONEL                   */ .halfword 179
+/* SPECIES_BIRNIGNANT                  */ .halfword 215
+/* SPECIES_GOBLEYE                     */ .halfword 168
+/* SPECIES_CACTOLERO                   */ .halfword 268
+/* SPECIES_DRIFELIN                    */ .halfword 268
+/* SPECIES_ARMAGESNOW                  */ .halfword 269
+/* SPECIES_NURSAUND                    */ .halfword 630
+/* SPECIES_DISGUMSTER                  */ .halfword 184
+/* SPECIES_YOOEFOH                     */ .halfword 260
+/* SPECIES_KOMALARGY                   */ .halfword 268
 
 /* SPECIES_MEGA_VENUSAUR               */ .halfword 313
 /* SPECIES_MEGA_CHARIZARD_X            */ .halfword 317

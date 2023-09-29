@@ -8964,7 +8964,7 @@ mondata SPECIES_DRIFBLIM, "Drifblim"
     catchrate 60
     baseexp 0 // defined in baseexp.s
     evyields 2, 0, 0, 0, 0, 0
-    items ITEM_NONE, ITEM_AIR_BALLOON
+    items ITEM_NONE, ITEM_NONE
     genderratio 127
     eggcycles 30
     basefriendship 50
@@ -22481,6 +22481,86 @@ mondata SPECIES_TERAPAGOS, "-----"
     mondexheight SPECIES_TERAPAGOS, "???’??”"
     mondexweight SPECIES_TERAPAGOS, "????.? lbs."
 
+mondata SPECIES_SPEKTRE, "Spektre"
+    basestats 60, 130, 75, 110, 65, 60
+    types TYPE_GHOST, TYPE_POISON
+    catchrate 45
+    baseexp 0 // defined in baseexp.s
+    evyields 0, 0, 0, 0, 3, 0
+    items ITEM_NONE, ITEM_SPELL_TAG
+    genderratio 127
+    eggcycles 20
+    basefriendship 50
+    growthrate GROWTH_MEDIUM_SLOW
+    egggroups EGG_GROUP_AMORPHOUS, EGG_GROUP_AMORPHOUS
+    abilities ABILITY_LEVITATE, ABILITY_NONE
+    runchance 0
+    colorflip BODY_COLOR_PURPLE, 0
+    mondexentry SPECIES_SPEKTRE, "todo"
+    mondexclassification SPECIES_SPEKTRE, "Shadow Pokémon"
+    mondexheight SPECIES_SPEKTRE, "4’11”" //TODO
+    mondexweight SPECIES_SPEKTRE, "89.3 lbs." //todo
+
+mondata SPECIES_NITEMUR, "Nitemur"
+    basestats 90, 63, 60, 82, 103, 125
+    types TYPE_PSYCHIC, TYPE_POISON
+    catchrate 75 //TODO
+    baseexp 0 // defined in baseexp.s
+    evyields 0, 0, 0, 0, 0, 3
+    items ITEM_NONE, ITEM_NONE
+    genderratio 127
+    eggcycles 20
+    basefriendship 70
+    growthrate GROWTH_MEDIUM_FAST
+    egggroups EGG_GROUP_HUMAN_LIKE, EGG_GROUP_HUMAN_LIKE
+    abilities ABILITY_INSOMNIA, ABILITY_BAD_DREAMS
+    runchance 0
+    colorflip BODY_COLOR_YELLOW, 0
+    mondexentry SPECIES_NITEMUR, "todo"
+    mondexclassification SPECIES_NITEMUR, "Ethereal Pokémon"
+    mondexheight SPECIES_NITEMUR, "5’03”" //todo
+    mondexweight SPECIES_NITEMUR, "166.7 lbs." //todo
+
+mondata SPECIES_LICKIDRULE, "Lickidrule"
+    basestats 135, 85, 90, 40, 75, 90
+    types TYPE_NORMAL, TYPE_NORMAL
+    catchrate 30
+    baseexp 0 // defined in baseexp.s
+    evyields 3, 0, 0, 0, 0, 0
+    items ITEM_NONE, ITEM_LAGGING_TAIL
+    genderratio 127
+    eggcycles 20
+    basefriendship 50
+    growthrate GROWTH_MEDIUM_FAST
+    egggroups EGG_GROUP_MONSTER, EGG_GROUP_MONSTER
+    abilities ABILITY_OWN_TEMPO, ABILITY_OBLIVIOUS //todo antithetical
+    runchance 0
+    colorflip BODY_COLOR_PINK, 0
+    mondexentry SPECIES_LICKIDRULE, "todo"
+    mondexclassification SPECIES_LICKIDRULE, "Licking Pokémon"
+    mondexheight SPECIES_LICKIDRULE, "5’07”" //TODO
+    mondexweight SPECIES_LICKIDRULE, "308.6 lbs." //TODO
+    
+mondata SPECIES_AFROSTITE, "Afrostite"
+    basestats 85, 90, 45, 85, 130, 105
+    types TYPE_ICE, TYPE_PSYCHIC
+    catchrate 45 //todo
+    baseexp 0 // defined in baseexp.s
+    evyields 0, 0, 0, 0, 3, 0
+    items ITEM_ASPEAR_BERRY, ITEM_NONE
+    genderratio 254
+    eggcycles 25
+    basefriendship 50
+    growthrate GROWTH_MEDIUM_FAST
+    egggroups EGG_GROUP_HUMAN_LIKE, EGG_GROUP_HUMAN_LIKE
+    abilities ABILITY_OBLIVIOUS, ABILITY_QUEENLY_MAJESTY
+    runchance 0
+    colorflip BODY_COLOR_RED, 0 //todo?
+    mondexentry SPECIES_AFROSTITE, "todo" 
+    mondexclassification SPECIES_AFROSTITE, "todo Pokémon"
+    mondexheight SPECIES_AFROSTITE, "4’07”" //todo
+    mondexweight SPECIES_AFROSTITE, "89.5 lbs." //todo
+            
 mondata SPECIES_LEDIDER, "Ledider"
     basestats 65, 85, 90, 100, 35, 115
     types TYPE_BUG, TYPE_FIGHTING
@@ -22492,16 +22572,315 @@ mondata SPECIES_LEDIDER, "Ledider"
     eggcycles 15
     basefriendship 70
     growthrate GROWTH_FAST
-    egggroups EGG_GROUP_BUG, EGG_GROUP_BUG
+    egggroups EGG_GROUP_BUG, EGG_GROUP_HUMAN_LIKE
     abilities ABILITY_SWARM, ABILITY_EARLY_BIRD
     runchance 0
     colorflip BODY_COLOR_RED, 0
-    tmdata SPECIES_LEDIDER_TM_DATA_0, SPECIES_LEDIDER_TM_DATA_1, SPECIES_LEDIDER_TM_DATA_2, SPECIES_LEDIDER_TM_DATA_3
     mondexentry SPECIES_LEDIDER, "todo"
     mondexclassification SPECIES_LEDIDER, "Heroic Pokémon"
     mondexheight SPECIES_LEDIDER, "4’07”" //todo
     mondexweight SPECIES_LEDIDER, "178.5 lbs." //todo
+    
+mondata SPECIES_SPIDEATH, "Spideath"
+    basestats 100, 120, 85, 35, 65, 85
+    types TYPE_BUG, TYPE_GHOST
+    catchrate 90 //todo
+    baseexp 0 // defined in baseexp.s
+    evyields 0, 3, 0, 0, 0, 0
+    items ITEM_NONE, ITEM_NONE
+    genderratio 127
+    eggcycles 15
+    basefriendship 70
+    growthrate GROWTH_FAST
+    egggroups EGG_GROUP_BUG, EGG_GROUP_BUG
+    abilities ABILITY_SWARM, ABILITY_INSOMNIA
+    runchance 0
+    colorflip BODY_COLOR_RED, 0 //todo. white?
+    mondexentry SPECIES_SPIDEATH, "todo" 
+    mondexclassification SPECIES_SPIDEATH, "Reaper Pokémon"
+    mondexheight SPECIES_SPIDEATH, "3’07”" //todo
+    mondexweight SPECIES_SPIDEATH, "73.9 lbs." //todo
+    
+mondata SPECIES_FALREST, "Falrest"
+    basestats 80, 110, 135, 50, 60, 75
+    types TYPE_ROCK, TYPE_GRASS
+    catchrate 65
+    baseexp 0 // defined in baseexp.s
+    evyields 0, 0, 3, 0, 0, 0
+    items ITEM_NONE, ITEM_NONE
+    genderratio 127
+    eggcycles 20
+    basefriendship 50
+    growthrate GROWTH_MEDIUM_FAST
+    egggroups EGG_GROUP_MINERAL, EGG_GROUP_MINERAL
+    abilities ABILITY_STURDY, ABILITY_ROCK_HEAD
+    runchance 0
+    colorflip BODY_COLOR_BROWN, 0 //todo. green?
+    mondexentry SPECIES_FALREST, "todo"
+    mondexclassification SPECIES_FALREST, "Mossy Pokémon"
+    mondexheight SPECIES_FALREST, "3’11”" //todo
+    mondexweight SPECIES_FALREST, "83.8 lbs." //todo
+    
+mondata SPECIES_GIGATOBULL, "Gigatobull"
+    basestats 95, 125, 85, 50, 105, 70
+    types (FAIRY_TYPE_IMPLEMENTED) ? TYPE_FAIRY : TYPE_NORMAL, TYPE_GROUND
+    catchrate 75
+    baseexp 0 // defined in baseexp.s
+    evyields 0, 2, 0, 1, 0, 0
+    items ITEM_RARE_BONE, ITEM_THICK_CLUB
+    genderratio 190
+    eggcycles 20
+    basefriendship 70
+    growthrate GROWTH_FAST
+    egggroups EGG_GROUP_FIELD, EGG_GROUP_FAIRY
+    abilities ABILITY_INTIMIDATE, ABILITY_BERSERK
+    runchance 0
+    colorflip BODY_COLOR_PURPLE, 0
+    mondexentry SPECIES_GIGATOBULL, "todo"
+    mondexclassification SPECIES_GIGATOBULL, "Fairy Pokémon"
+    mondexheight SPECIES_GIGATOBULL, "4’07”" //TODO
+    mondexweight SPECIES_GIGATOBULL, "107.4 lbs." //TODO
+    
+mondata SPECIES_LIQWILDATE, "Liqwildate"
+    basestats 85, 115, 95, 85, 65, 65
+    types TYPE_ELECTRIC, TYPE_POISON
+    catchrate 135
+    baseexp 0 // defined in baseexp.s
+    evyields 0, 1, 0, 0, 0, 0
+    items ITEM_NONE, ITEM_NONE
+    genderratio 127
+    eggcycles 0
+    basefriendship 70
+    growthrate GROWTH_MEDIUM_FAST
+    egggroups EGG_GROUP_WATER_2, EGG_GROUP_WATER_2
+    abilities ABILITY_POISON_POINT, ABILITY_SWIFT_SWIM
+    runchance 0
+    colorflip BODY_COLOR_PURPLE, 0
+    mondexentry SPECIES_LIQWILDATE, "todo"
+    mondexclassification SPECIES_LIQWILDATE, "todo Pokémon"
+    mondexheight SPECIES_LIQWILDATE, "8’02”" //todo
+    mondexweight SPECIES_LIQWILDATE, "133.4 lbs." //todo
+    
+mondata SPECIES_CURESOLA, "Curesola"
+    basestats 75, 95, 105, 55, 75, 105
+    types TYPE_WATER, TYPE_GRASS
+    catchrate 60 //todo
+    baseexp 0 // defined in baseexp.s
+    evyields 0, 0, 1, 0, 0, 1
+    items ITEM_HARD_STONE, ITEM_RED_SHARD
+    genderratio 190
+    eggcycles 20
+    basefriendship 50
+    growthrate GROWTH_FAST
+    egggroups EGG_GROUP_WATER_1, EGG_GROUP_WATER_3
+    abilities ABILITY_HUSTLE, ABILITY_NATURAL_CURE
+    runchance 0
+    colorflip BODY_COLOR_PINK, 0
+    mondexentry SPECIES_CURESOLA, "todo"
+    mondexclassification SPECIES_CURESOLA, "Coral Reef Pokémon"
+    mondexheight SPECIES_CURESOLA, "2’00”" //todo
+    mondexweight SPECIES_CURESOLA, "11.0 lbs." //todo
+    
+mondata SPECIES_TAKORONEL, "Takoronel"
+    basestats 85, 125, 85, 25, 125, 85
+    types TYPE_WATER, TYPE_STEEL
+    catchrate 75 //TODO
+    baseexp 0 // defined in baseexp.s
+    evyields 0, 1, 0, 0, 1, 0
+    items ITEM_NONE, ITEM_NONE
+    genderratio 127
+    eggcycles 20
+    basefriendship 50
+    growthrate GROWTH_MEDIUM_FAST
+    egggroups EGG_GROUP_WATER_1, EGG_GROUP_WATER_2
+    abilities ABILITY_BULLETPROOF, ABILITY_SNIPER
+    runchance 0
+    colorflip BODY_COLOR_RED, 0
+    mondexentry SPECIES_TAKORONEL, "todo. honestly u get it at this point"
+    mondexclassification SPECIES_TAKORONEL, "todo Pokémon"
+    mondexheight SPECIES_TAKORONEL, "2’11”"
+    mondexweight SPECIES_TAKORONEL, "62.8 lbs."
+    
+mondata SPECIES_BIRNIGNANT, "Birnignant"
+    basestats 95, 105, 85, 105, 75, 65
+    types TYPE_ICE, TYPE_FAIRY
+    catchrate 45
+    baseexp 0 // defined in baseexp.s
+    evyields 0, 2, 0, 0, 0, 0
+    items ITEM_NONE, ITEM_NONE
+    genderratio 127
+    eggcycles 20
+    basefriendship 50
+    growthrate GROWTH_FAST
+    egggroups EGG_GROUP_WATER_1, EGG_GROUP_FIELD
+    abilities ABILITY_VITAL_SPIRIT, ABILITY_THICK_FAT
+    runchance 0
+    colorflip BODY_COLOR_RED, 0
+    mondexentry SPECIES_BIRNIGNANT, "todo"
+    mondexclassification SPECIES_BIRNIGNANT, "todo Pokémon"
+    mondexheight SPECIES_BIRNIGNANT, "2’11”"
+    mondexweight SPECIES_BIRNIGNANT, "35.3 lbs."
 
+mondata SPECIES_GOBLEYE, "Gobleye"
+    basestats 60, 105, 105, 60, 75, 75
+    types TYPE_DARK, TYPE_GHOST
+    catchrate 45
+    baseexp 0 // defined in baseexp.s
+    evyields 0, 1, 1, 0, 0, 0
+    items ITEM_NONE, ITEM_WIDE_LENS
+    genderratio 127
+    eggcycles 25
+    basefriendship 35
+    growthrate GROWTH_MEDIUM_SLOW
+    egggroups EGG_GROUP_HUMAN_LIKE, EGG_GROUP_HUMAN_LIKE
+    abilities ABILITY_MIRROR_ARMOR, ABILITY_ANALYTIC
+    runchance 0
+    colorflip BODY_COLOR_PURPLE, 0
+    mondexentry SPECIES_GOBLEYE, "todo"
+    mondexclassification SPECIES_GOBLEYE, "Unnerving Pokémon"
+    mondexheight SPECIES_GOBLEYE, "1’08”"
+    mondexweight SPECIES_GOBLEYE, "24.3 lbs."
+    
+mondata SPECIES_CACTOLERO, "Cactolero"
+    basestats 85, 135, 75, 65, 105, 70
+    types TYPE_GRASS, TYPE_DARK
+    catchrate 60 //todo
+    baseexp 0 // defined in baseexp.s
+    evyields 0, 2, 0, 0, 1, 0
+    items ITEM_STICKY_BARB, ITEM_POISON_BARB
+    genderratio 127
+    eggcycles 20
+    basefriendship 35
+    growthrate GROWTH_MEDIUM_SLOW
+    egggroups EGG_GROUP_GRASS, EGG_GROUP_HUMAN_LIKE
+    abilities ABILITY_SAND_RUSH, ABILITY_QUICK_DRAW
+    runchance 0
+    colorflip BODY_COLOR_GREEN, 0
+    mondexentry SPECIES_CACTOLERO, "TODO"
+    mondexclassification SPECIES_CACTOLERO, "Ranger Pokémon"
+    mondexheight SPECIES_CACTOLERO, "4’03”"
+    mondexweight SPECIES_CACTOLERO, "170.6 lbs."
+    
+mondata SPECIES_DRIFELIN, "Drifelin"
+    basestats 160, 80, 64, 80, 100, 54
+    types TYPE_GHOST, TYPE_FLYING
+    catchrate 60 //todo
+    baseexp 0 // defined in baseexp.s
+    evyields 3, 0, 0, 0, 0, 0
+    items ITEM_NONE, ITEM_NONE
+    genderratio 127
+    eggcycles 30
+    basefriendship 50
+    growthrate GROWTH_FLUCTUATING
+    egggroups EGG_GROUP_AMORPHOUS, EGG_GROUP_AMORPHOUS
+    abilities ABILITY_AFTERMATH, ABILITY_UNBURDEN
+    runchance 0
+    colorflip BODY_COLOR_PURPLE, 0
+    mondexentry SPECIES_DRIFELIN, "todo"
+    mondexclassification SPECIES_DRIFELIN, "Blimp Pokémon"
+    mondexheight SPECIES_DRIFELIN, "3’11”"
+    mondexweight SPECIES_DRIFELIN, "33.1 lbs."
+    
+mondata SPECIES_ARMAGESNOW, "Armagesnow"
+    basestats 100, 117, 80, 55, 92, 100
+    types TYPE_GRASS, TYPE_ICE
+    catchrate 60
+    baseexp 0 // defined in baseexp.s
+    evyields 0, 2, 0, 0, 1, 0
+    items ITEM_NONE, ITEM_NEVER_MELT_ICE
+    genderratio 127
+    eggcycles 20
+    basefriendship 50
+    growthrate GROWTH_SLOW
+    egggroups EGG_GROUP_MONSTER, EGG_GROUP_GRASS
+    abilities ABILITY_SNOW_WARNING, ABILITY_NONE
+    runchance 0
+    colorflip BODY_COLOR_WHITE, 0
+    mondexentry SPECIES_ARMAGESNOW, "It lives a quiet life on mountains that\nare perpetually covered in snow.\nIt hides itself by whipping up blizzards."
+    mondexclassification SPECIES_ARMAGESNOW, "Frost Tree Pokémon"
+    mondexheight SPECIES_ARMAGESNOW, "7’03”"
+    mondexweight SPECIES_ARMAGESNOW, "298.7 lbs."
+    
+mondata SPECIES_NURSAUND, "Nursaund"
+    basestats 123, 85, 96, 55, 85, 96
+    types TYPE_NORMAL, TYPE_FAIRY
+    catchrate 200
+    baseexp 0 // defined in baseexp.s
+    evyields 3, 0, 0, 0, 0, 0
+    items ITEM_ORAN_BERRY, ITEM_SITRUS_BERRY
+    genderratio 127
+    eggcycles 20
+    basefriendship 50
+    growthrate GROWTH_FAST
+    egggroups EGG_GROUP_FAIRY, EGG_GROUP_FAIRY
+    abilities ABILITY_HEALER, ABILITY_REGENERATOR
+    runchance 0
+    colorflip BODY_COLOR_PINK, 0 //todo
+    mondexentry SPECIES_NURSAUND, "todo"
+    mondexclassification SPECIES_NURSAUND, "todo Pokémon"
+    mondexheight SPECIES_NURSAUND, "3’07”"
+    mondexweight SPECIES_NURSAUND, "68.3 lbs."
+    
+mondata SPECIES_DISGUMSTER, "Disgumster"
+    basestats 90, 105, 112, 55, 70, 92
+    types TYPE_POISON, TYPE_STEEL
+    catchrate 60 //todo
+    baseexp 0 // defined in baseexp.s
+    evyields 0, 1, 2, 0, 0, 0
+    items ITEM_SILK_SCARF, ITEM_NUGGET
+    genderratio 127
+    eggcycles 20
+    basefriendship 50
+    growthrate GROWTH_MEDIUM_FAST
+    egggroups EGG_GROUP_MINERAL, EGG_GROUP_MINERAL
+    abilities ABILITY_STENCH, ABILITY_HEAVY_METAL
+    runchance 0
+    colorflip BODY_COLOR_GREEN, 0
+    mondexentry SPECIES_DISGUMSTER, "todo"
+    mondexclassification SPECIES_DISGUMSTER, "todo (Trash Heap?) Pokémon"
+    mondexheight SPECIES_DISGUMSTER, "6’03”" //todo
+    mondexweight SPECIES_DISGUMSTER, "998.7 lbs."
+    
+mondata SPECIES_YOOEFOH, "Yooefoh"
+    basestats 80, 80, 80, 51, 130, 105
+    types TYPE_PSYCHIC, TYPE_ELECTRIC
+    catchrate 90 //todo
+    baseexp 0 // defined in baseexp.s
+    evyields 0, 0, 0, 0, 3, 0
+    items ITEM_NONE, ITEM_NONE
+    genderratio 127
+    eggcycles 20
+    basefriendship 50
+    growthrate GROWTH_MEDIUM_FAST
+    egggroups EGG_GROUP_HUMAN_LIKE, EGG_GROUP_HUMAN_LIKE
+    abilities ABILITY_LEVITATE, ABILITY_NONE
+    runchance 0
+    colorflip BODY_COLOR_BROWN, 0 //todo
+    mondexentry SPECIES_YOOEFOH, "todo"
+    mondexclassification SPECIES_YOOEFOH, "Otherworldly Pokémon"
+    mondexheight SPECIES_YOOEFOH, "3’03”"
+    mondexweight SPECIES_YOOEFOH, "76.1 lbs."
+    
+mondata SPECIES_KOMALARGY, "Komalargy"
+    basestats 75, 125, 90, 55, 85, 105
+    types TYPE_NORMAL, TYPE_GHOST
+    catchrate 45
+    baseexp 0 // defined in baseexp.s
+    evyields 0, 3, 0, 0, 0, 0
+    items ITEM_NONE, ITEM_NONE
+    genderratio 127
+    eggcycles 20
+    basefriendship 70
+    growthrate GROWTH_SLOW
+    egggroups EGG_GROUP_FIELD, EGG_GROUP_FIELD
+    abilities ABILITY_COMATOSE, ABILITY_NONE
+    runchance 0
+    colorflip BODY_COLOR_BLUE, 0
+    mondexentry SPECIES_KOMALARGY, "todo"
+    mondexclassification SPECIES_KOMALARGY, "Nightmare Pokémon"
+    mondexheight SPECIES_KOMALARGY, "1’04”"
+    mondexweight SPECIES_KOMALARGY, "43.9 lbs."
+    
 mondata SPECIES_MEGA_VENUSAUR, "-----"
     basestats 80,100,123,80,122,120
     types TYPE_GRASS, TYPE_POISON

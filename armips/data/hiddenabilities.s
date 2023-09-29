@@ -1076,7 +1076,26 @@
 /* SPECIES_MUNKIDORI                   */ .halfword ABILITY_NONE
 /* SPECIES_FEZANDIPITI                 */ .halfword ABILITY_NONE
 /* SPECIES_TERAPAGOS                   */ .halfword ABILITY_NONE
+/* SPECIES_SPEKTRE                     */ .halfword ABILITY_NONE
+/* SPECIES_NITEMUR                     */ .halfword ABILITY_NO_GUARD
+/* SPECIES_LICKIDRULE                  */ .halfword ABILITY_CLOUD_NINE
+/* SPECIES_AFROSTITE                   */ .halfword ABILITY_DRY_SKIN
 /* SPECIES_LEDIDER                     */ .halfword ABILITY_IRON_FIST //todo
+/* SPECIES_SPIDEATH                    */ .halfword ABILITY_MERCILESS
+/* SPECIES_FALREST                     */ .halfword ABILITY_RATTLED
+/* SPECIES_GIGATOBULL                  */ .halfword ABILITY_STRONG_JAW
+/* SPECIES_LIQWILDATE                  */ .halfword ABILITY_INTIMIDATE
+/* SPECIES_CURESOLA                    */ .halfword ABILITY_REGENERATOR
+/* SPECIES_TAKORONEL                   */ .halfword ABILITY_MEGA_LAUNCHER
+/* SPECIES_BIRNIGNANT                  */ .halfword ABILITY_REFRIGERATE
+/* SPECIES_GOBLEYE                     */ .halfword ABILITY_PRANKSTER
+/* SPECIES_CACTOLERO                   */ .halfword ABILITY_WATER_ABSORB
+/* SPECIES_DRIFELIN                    */ .halfword ABILITY_FLARE_BOOST
+/* SPECIES_ARMAGESNOW                  */ .halfword ABILITY_FLUFFY
+/* SPECIES_NURSAUND                    */ .halfword ABILITY_CUTE_CHARM
+/* SPECIES_DISGUMSTER                  */ .halfword ABILITY_AFTERMATH
+/* SPECIES_YOOEFOH                     */ .halfword ABILITY_ANALYTIC
+/* SPECIES_KOMALARGY                   */ .halfword ABILITY_NONE
 
 /* SPECIES_MEGA_VENUSAUR               */ .halfword ABILITY_NONE
 /* SPECIES_MEGA_CHARIZARD_X            */ .halfword ABILITY_NONE
