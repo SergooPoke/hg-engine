@@ -526,7 +526,7 @@ BOOL BattleScriptCommandHandler(void *bw, struct BattleStruct *sp)
         if (cmdAddress != (u32)&sp->SkillSeqWork[sp->skill_seq_no])
         {
             cmdAddress = (u32)&sp->SkillSeqWork[sp->skill_seq_no];
-            sprintf(buf, "%s - 0x%02X\n", BattleScrCmdNames[command], command);
+            sprintf(buf, "[BattleScriptCommandHandler] %s - 0x%02X\n", BattleScrCmdNames[command], command);
             debugsyscall(buf);
             if (command == 0xE0 || command == 0x24)
             {
@@ -540,10 +540,11 @@ BOOL BattleScriptCommandHandler(void *bw, struct BattleStruct *sp)
         }
         if (command == 0xE) // wait message soft lock?
         {
-            if (sp->SkillSeqWork[0]++ > 300)
+            if (sp->SkillSeqWork[0]++ > 300) // timeout clear queue
             {
-                sp->skill_seq_no++;
-                sp->SkillSeqWork[0] = 0;
+        //        debugsyscall("[BattleScriptCommandHandler] TIMEOUT: Force Command Increment\n");
+        //        sp->skill_seq_no++;
+        //        sp->SkillSeqWork[0] = 0;
             }
         }
 #endif //DEBUG_BATTLE_SCRIPT_COMMANDS
@@ -687,7 +688,7 @@ int GrabClientFromBattleScriptParam(void *bw, struct BattleStruct *sp, int side)
             int client_set_max;
             int type;
 
-            if (BattleTypeGet(bw) & BATTLE_TYPE_MULTI)
+            if (BattleTypeGet(bw) & BATTLE_TYPE_DOUBLE)
                 type = 5;
             else
                 type = 1;
@@ -741,7 +742,7 @@ int GrabClientFromBattleScriptParam(void *bw, struct BattleStruct *sp, int side)
             int client_set_max;
             int type;
 
-            if (BattleTypeGet(bw) & BATTLE_TYPE_MULTI)
+            if (BattleTypeGet(bw) & BATTLE_TYPE_DOUBLE)
             {
                 type = 4;
             }
@@ -853,6 +854,9 @@ int GrabClientFromBattleScriptParam(void *bw, struct BattleStruct *sp, int side)
         return client_no;
 }
 
+#ifdef DEBUG_SERVER_QUEUE
+u32 cmdAddress2 = 0;
+#endif
 /**
  *  @brief check if waitmessage battle script command should end
  *
@@ -873,16 +877,24 @@ BOOL Link_QueueIsEmpty(struct BattleStruct *sp) {
             for (j = 0; j < 16; j++) {
                 cnt += sp->ServerQue[i][battlerId][j];
 #ifdef DEBUG_SERVER_QUEUE
-                if (sp->ServerQue[i][battlerId][j])
+                if (sp->ServerQue[i][battlerId][j] && cmdAddress2 != (u32)&sp->SkillSeqWork[sp->skill_seq_no])
                 {
-                    sprintf(buf, "battlerId = %d, serverQueue = %d\n", battlerId, sp->ServerQue[i][battlerId][j]);
+                    sprintf(buf, "[Link_QueueIsEmpty] battlerId = %d, serverQueue = %d\n", battlerId, sp->ServerQue[i][battlerId][j]);
                     debugsyscall(buf);
+                    cmdAddress2 = (u32)&sp->SkillSeqWork[sp->skill_seq_no];
+                }
+                if (sp->SkillSeqWork[0] > 290 && sp->ServerQue[i][battlerId][j])
+                {
+                    sprintf(buf, "[Link_QueueIsEmpty] TIMEOUT on serverQueue %d. Reset to 0.\n", sp->ServerQue[i][battlerId][j]);
+                    debugsyscall(buf);
+                    sp->ServerQue[i][battlerId][j] = 0;
+                    cnt = 0;
                 }
 #endif
             }
         }
     }
-    
+
     if (cnt == 0) {
         sp->server_queue_time_out = 0;
     }
@@ -897,7 +909,7 @@ BOOL Link_QueueIsEmpty(struct BattleStruct *sp) {
  *  @param sp global battle structure
  *  @return FALSE
  */
-BOOL btl_scr_cmd_0E_waitmessage(void *bw, struct BattleStruct *sp) {
+BOOL btl_scr_cmd_0E_waitmessage(void *bw UNUSED, struct BattleStruct *sp) {
     if (Link_QueueIsEmpty(sp)) {
         IncrementBattleScriptPtr(sp, 1);
     } else {
@@ -1000,7 +1012,7 @@ BOOL btl_scr_cmd_18_playanimation2(void *bw, struct BattleStruct *sp)
  *  @param sp global battle structure
  *  @return FALSE
  */
-BOOL btl_scr_cmd_24_jumptocurmoveeffectscript(void *bw, struct BattleStruct *sp)
+BOOL btl_scr_cmd_24_jumptocurmoveeffectscript(void *bw UNUSED, struct BattleStruct *sp)
 {
     int effect;
 
@@ -1095,26 +1107,25 @@ BOOL btl_scr_cmd_27_shouldgetexp(void *bw, struct BattleStruct *sp)
 
 // exp. calculation has been entirely moved to Task_DistributeExp_Extend as of the implementation of capture experience.
 
+
 //#if EXPERIENCE_FORMULA_GEN < 5 || EXPERIENCE_FORMULA_GEN == 6 // flat exp rate.  we move this to the task calc itself if the scaled is enabled
 //        int i;
-//        //int mons_getting_exp = 0;
-//        //int mons_getting_exp_from_item = 0;
+//        int total_exp;
+//        int mons_getting_exp = 0;
+//        int mons_getting_exp_from_item = 0;
 //        u16 item;
 //        u32 totalexp;
 //        int eqp;
 //        struct PartyPokemon *pp;
 //
-//        sp->mons_getting_exp = 0;
-//        sp->mons_getting_exp_from_item = 0;
-//
-//        for (i = 0; i < BattleWorkPokePartyGet(bw, 0)->PokeCount; i++)
+//        for (i = 0; i < BattleWorkPokePartyGet(bw, 0)->count; i++)
 //        {
 //            pp = BattleWorkPokemonParamGet(bw, 0, i);
 //            if ((GetMonData(pp, MON_DATA_SPECIES, NULL)) && (GetMonData(pp, MON_DATA_HP, NULL)))
 //            {
 //                if (sp->obtained_exp_right_flag[(sp->fainting_client >> 1) & 1] & No2Bit(i))
 //                {
-//                    sp->mons_getting_exp++;
+//                    mons_getting_exp++;
 //                }
 //
 //                item = GetMonData(pp, MON_DATA_HELD_ITEM, NULL);
@@ -1122,7 +1133,7 @@ BOOL btl_scr_cmd_27_shouldgetexp(void *bw, struct BattleStruct *sp)
 //
 //                if (eqp == HOLD_EFFECT_EXP_SHARE)
 //                {
-//                    sp->mons_getting_exp_from_item++;
+//                    mons_getting_exp_from_item++;
 //                }
 //            }
 //        }
@@ -1162,6 +1173,13 @@ BOOL btl_scr_cmd_27_shouldgetexp(void *bw, struct BattleStruct *sp)
     return FALSE;
 }
 
+// global variables to track experience
+u8 scratchpad[4] = {0, 0, 0, 0};
+
+#define monCount scratchpad[0]
+#define monCountFromItem scratchpad[1]
+#define trackPartyExperience scratchpad[2]
+
 /**
  *  @brief task to distribute experience
  *
@@ -1173,29 +1191,31 @@ void Task_DistributeExp_Extend(void *arg0, void *work)
     struct EXP_CALCULATOR *expcalc = work;
 #if EXPERIENCE_FORMULA_GEN == 5 || EXPERIENCE_FORMULA_GEN > 6 // scaled exp rate
     int sel_mons_no;
-    struct PartyPokemon *pp;
+    struct PartyPokemon *pp = NULL;
     int client_no;
-    int exp_client_no;
+    struct Party *party = BattleWorkPokePartyGet(expcalc->bw, 0);
+    int exp_client_no = 0;
     int item;
     int eqp;
+    //u32 mons_getting_exp_from_item = 0;
+    //u32 mons_getting_exp = 0;
     u32 totalexp = 0;
 
-    client_no = (expcalc->sp->fainting_client) >> 1 & 1;
-    exp_client_no = 0;
+    client_no = (expcalc->sp->fainting_client >> 1) & 1;
 
-    // count how many pokémon are getting experience - only count for the first pokemon, don't update until the next time we gain after
-    if (expcalc->work[6] == 0)
+    // count how many pokémon are getting experience
+    if (!expcalc->work[6])
     {
-        expcalc->sp->mons_getting_exp = 0;
-        expcalc->sp->mons_getting_exp_from_item = 0;
-        for (int i = 0; i < BattleWorkPokePartyGet(expcalc->bw, 0)->count; i++)
+        monCount = 0;
+        monCountFromItem = 0;
+        for (int i = 0; i < party->count; i++)
         {
             pp = BattleWorkPokemonParamGet(expcalc->bw, exp_client_no, i);
             if ((GetMonData(pp, MON_DATA_SPECIES, NULL)) && (GetMonData(pp, MON_DATA_HP, NULL)))
             {
-                if (expcalc->sp->obtained_exp_right_flag[(expcalc->sp->fainting_client >> 1) & 1] & No2Bit(i))
+                if (expcalc->sp->obtained_exp_right_flag[client_no /*(expcalc->sp->fainting_client >> 1) & 1*/] & No2Bit(i))
                 {
-                    expcalc->sp->mons_getting_exp++;
+                    monCount++;
                 }
 
                 item = GetMonData(pp, MON_DATA_HELD_ITEM, NULL);
@@ -1203,59 +1223,68 @@ void Task_DistributeExp_Extend(void *arg0, void *work)
 
                 if (eqp == HOLD_EFFECT_EXP_SHARE)
                 {
-                    expcalc->sp->mons_getting_exp_from_item++;
+                    monCountFromItem++;
                 }
             }
         }
     }
 
-    // grab the pokémon that is actually gaining the experience
-    for (sel_mons_no = expcalc->work[6]; sel_mons_no < BattleWorkPokeCountGet(expcalc->bw, exp_client_no); sel_mons_no++)
+    if (expcalc->seq_no < 37) // either this or switch to below.  this prevents NULL access though (ideally)
     {
-        pp = BattleWorkPokemonParamGet(expcalc->bw, exp_client_no, sel_mons_no);
-        item = GetMonData(pp, MON_DATA_HELD_ITEM, NULL);
-        eqp = GetItemData(item, ITEM_PARAM_HOLD_EFFECT, 5);
-        if ((eqp == HOLD_EFFECT_EXP_SHARE) || (expcalc->sp->obtained_exp_right_flag[client_no] & No2Bit(sel_mons_no)))
+        // grab the pokémon that is actually gaining the experience
+        for (sel_mons_no = expcalc->work[6]; sel_mons_no < BattleWorkPokeCountGet(expcalc->bw, exp_client_no); sel_mons_no++)
         {
-            break;
+            pp = BattleWorkPokemonParamGet(expcalc->bw, exp_client_no, sel_mons_no);
+            if (pp == NULL)
+                goto _skipAllThis;
+            item = GetMonData(pp, MON_DATA_HELD_ITEM, NULL);
+            eqp = GetItemData(item, ITEM_PARAM_HOLD_EFFECT, 5);
+
+            if ((eqp == HOLD_EFFECT_EXP_SHARE) || (expcalc->sp->obtained_exp_right_flag[client_no] & No2Bit(sel_mons_no)))
+            {
+                break;
+            }
         }
-    }
 
-    // actually calculate the experience
-    u32 Lp = GetMonData(pp, MON_DATA_LEVEL, NULL); // this should contain the level of the person getting experience
-    u32 level = expcalc->sp->battlemon[expcalc->sp->fainting_client].level; // need to calculate exp individually for each mon it seems
-
-    totalexp = GetSpeciesBaseExp(expcalc->sp->battlemon[expcalc->sp->fainting_client].species, expcalc->sp->battlemon[expcalc->sp->fainting_client].form_no); // base experience
-    totalexp = (totalexp * level) / 5;
-
-    u32 top = (2*level + 10) * (2*level + 10); // tack on the square root later
-    u32 bottom = (level + Lp + 10) * (level + Lp + 10) * sqrt(level + Lp + 10);
-
-    totalexp *= top;
-    totalexp /= bottom;
-    totalexp = totalexp * sqrt(2*level + 10); // square root tacked on
-
-    if (expcalc->sp->mons_getting_exp_from_item)
-    {
-        expcalc->sp->obtained_exp = (totalexp / 2) / expcalc->sp->mons_getting_exp;
-        if (expcalc->sp->obtained_exp == 0)
+        if (sel_mons_no < BattleWorkPokeCountGet(expcalc->bw, exp_client_no))
         {
-            expcalc->sp->obtained_exp = 1;
+            // actually calculate the experience
+            u32 Lp = GetMonData(pp, MON_DATA_LEVEL, NULL); // this should contain the level of the person getting experience
+            u32 level = expcalc->sp->battlemon[expcalc->sp->fainting_client].level; // need to calculate exp individually for each mon it seems
+
+            totalexp = GetSpeciesBaseExp(expcalc->sp->battlemon[expcalc->sp->fainting_client].species, expcalc->sp->battlemon[expcalc->sp->fainting_client].form_no); // base experience
+            totalexp = (totalexp * level) / 5;
+
+            u32 top = (2*level + 10) * (2*level + 10); // tack on the square root later
+            u32 bottom = (level + Lp + 10) * (level + Lp + 10) * sqrt(level + Lp + 10);
+
+            totalexp *= top;
+            totalexp /= bottom;
+            totalexp = totalexp * sqrt(2*level + 10); // square root tacked on
+
+            if (monCountFromItem)
+            {
+                expcalc->sp->obtained_exp = (totalexp / 2) / monCount;
+                if (expcalc->sp->obtained_exp == 0)
+                {
+                    expcalc->sp->obtained_exp = 1;
+                }
+                expcalc->sp->exp_share_obtained_exp = (totalexp / 2) / monCountFromItem;
+                if (expcalc->sp->exp_share_obtained_exp == 0)
+                {
+                    expcalc->sp->exp_share_obtained_exp = 1;
+                }
+            }
+            else
+            {
+                expcalc->sp->obtained_exp = totalexp / monCount;
+                if (expcalc->sp->obtained_exp == 0)
+                {
+                    expcalc->sp->obtained_exp = 1;
+                }
+                expcalc->sp->exp_share_obtained_exp = 0;
+            }
         }
-        expcalc->sp->exp_share_obtained_exp = (totalexp / 2) / expcalc->sp->mons_getting_exp_from_item;
-        if (expcalc->sp->exp_share_obtained_exp == 0)
-        {
-            expcalc->sp->exp_share_obtained_exp = 1;
-        }
-    }
-    else
-    {
-        expcalc->sp->obtained_exp = totalexp / expcalc->sp->mons_getting_exp;
-        if (expcalc->sp->obtained_exp == 0)
-        {
-            expcalc->sp->obtained_exp = 1;
-        }
-        expcalc->sp->exp_share_obtained_exp = 0;
     }
 
 #ifdef DEBUG_PRINT_EXPERIENCE_VALUES
@@ -1267,55 +1296,61 @@ void Task_DistributeExp_Extend(void *arg0, void *work)
     sprintf(buf, "top = %d, bottom = %d\n", top, bottom);
     debugsyscall(buf);
 #endif
-    
+
 #else // EXPERIENCE_FORMULA_GEN < 5 || EXPERIENCE_FORMULA_GEN == 6 // flat exp rate needs to be calculated
+    if (expcalc->seq_no != 38)
     {
         int i;
+        int total_exp;
+        //int mons_getting_exp = 0;
+        //int mons_getting_exp_from_item = 0;
         u16 item;
         u32 totalexp;
         int eqp;
+        struct Party *party = BattleWorkPokePartyGet(expcalc->bw, 0);
         struct PartyPokemon *pp;
         struct BattleStruct *sp = expcalc->sp;
         void *bw = expcalc->bw;
         int exp_client_no = 0;
 
-        // count how many pokémon are getting experience - only count for the first pokemon, don't update until the next time we gain after
-        if (expcalc->work[6] == 0)
+        // count how many pokémon are getting experience
+        if (!expcalc->work[6])
         {
-            expcalc->sp->mons_getting_exp = 0;
-            expcalc->sp->mons_getting_exp_from_item = 0;
-            for (int i = 0; i < BattleWorkPokePartyGet(expcalc->bw, 0)->PokeCount; i++)
+            monCount = 0;
+            monCountFromItem = 0;
+            for (i = 0; i < party->count; i++)
             {
-                pp = BattleWorkPokemonParamGet(expcalc->bw, exp_client_no, i);
+                pp = BattleWorkPokemonParamGet(bw, exp_client_no, i);
                 if ((GetMonData(pp, MON_DATA_SPECIES, NULL)) && (GetMonData(pp, MON_DATA_HP, NULL)))
                 {
-                    if (expcalc->sp->obtained_exp_right_flag[(expcalc->sp->fainting_client >> 1) & 1] & No2Bit(i))
+                    monCount = 0;
+                    monCountFromItem = 0;
+                    if (sp->obtained_exp_right_flag[(sp->fainting_client >> 1) & 1] & No2Bit(i))
                     {
-                        expcalc->sp->mons_getting_exp++;
+                        monCount++;
                     }
 
                     item = GetMonData(pp, MON_DATA_HELD_ITEM, NULL);
-                    eqp = BattleItemDataGet(expcalc->sp, item, 1);
+                    eqp = BattleItemDataGet(sp, item, 1);
 
                     if (eqp == HOLD_EFFECT_EXP_SHARE)
                     {
-                        expcalc->sp->mons_getting_exp_from_item++;
+                        monCountFromItem++;
                     }
                 }
             }
         }
-
         // multiply by 255/390 (map audino to 255) to not get massively inflated experience rates
         totalexp = 255 * GetSpeciesBaseExp(sp->battlemon[sp->fainting_client].species, sp->battlemon[sp->fainting_client].form_no) / 390;//PokePersonalParaGet(sp->battlemon[sp->fainting_client].species, PERSONAL_EXP_YIELD);
         totalexp = (totalexp * sp->battlemon[sp->fainting_client].level) / 7;
-        if (expcalc->sp->mons_getting_exp_from_item)
+        if (monCountFromItem)
         {
-            sp->obtained_exp = (totalexp / 2) / expcalc->sp->mons_getting_exp;
+            sp->obtained_exp = (totalexp / 2) / monCount;
             if (sp->obtained_exp == 0)
             {
                 sp->obtained_exp = 1;
             }
-            sp->exp_share_obtained_exp = (totalexp / 2) / expcalc->sp->mons_getting_exp_from_item;
+            sp->exp_share_obtained_exp = (totalexp / 2) / monCountFromItem;
             if (sp->exp_share_obtained_exp == 0)
             {
                 sp->exp_share_obtained_exp = 1;
@@ -1323,7 +1358,7 @@ void Task_DistributeExp_Extend(void *arg0, void *work)
         }
         else
         {
-            sp->obtained_exp = totalexp / expcalc->sp->mons_getting_exp;
+            sp->obtained_exp = totalexp / monCount;
             if (sp->obtained_exp == 0)
             {
                 sp->obtained_exp = 1;
@@ -1334,20 +1369,22 @@ void Task_DistributeExp_Extend(void *arg0, void *work)
 
 #ifdef DEBUG_PRINT_EXPERIENCE_VALUES
     u8 buf[128];
-    sprintf(buf, "[Task_DistributeExp_Extend] Flat Rate - experience = %d", expcalc->sp->obtained_exp);
+    sprintf(buf, "[Task_DistributeExp_Extend] Flat Rate - experience = %d", sp->obtained_exp);
 #endif
 
 #endif
 
+_skipAllThis:
     Task_DistributeExp(arg0, work);
 }
+
 
 
 #ifdef IMPLEMENT_CAPTURE_EXPERIENCE
 
 extern u32 gKeepStructureCallbackIntact;
 u32 ALIGN4 store_current_exp_step = 0;
-u32 ALIGN4 store_work_params[7] = {0, 0, 0, 0, 0, 0, 0};
+u32 ALIGN4 store_work_params[8] = {0, 0, 0, 0, 0, 0, 0, 0};
 
 #endif // IMPLEMENT_CAPTURE_EXPERIENCE
 
@@ -1364,10 +1401,10 @@ BOOL Task_DistributeExp_capture_experience(void *arg0, void *work, u32 get_clien
 #ifdef IMPLEMENT_CAPTURE_EXPERIENCE
 
     BOOL ret = FALSE;
-    u32 original_work_params[7];
+    u32 original_work_params[NELEMS(store_work_params)];
     struct EXP_CALCULATOR *expcalc = work;
 
-    if (BattleTypeGet(expcalc->bw) & (BATTLE_TYPE_SAFARI | BATTLE_TYPE_POKE_PARK | BATTLE_TYPE_CATCHING_DEMO)) // these types of battles should not yield experience when catching a pokémon
+    if (BattleTypeGet(expcalc->bw) & BATTLE_TYPE_NO_EXPERIENCE)
         return TRUE;
 
     gKeepStructureCallbackIntact = 1; // signal to experience callback that it shouldn't delete the overall pokemon-getting callback since we're technically a parasite here
@@ -1375,16 +1412,47 @@ BOOL Task_DistributeExp_capture_experience(void *arg0, void *work, u32 get_clien
     // first step:  store the required variables
     u32 store_fainting_client = expcalc->sp->fainting_client;
     expcalc->seq_no = store_current_exp_step;
-    for (int i = 0; i < 7; i++)
+    for (int i = 0; i < (s32)NELEMS(store_work_params); i++)
     {
         original_work_params[i] = expcalc->work[i];
     }
 
     // second step:  overwrite required vars for exp calculation.  part is also done in for loop above, oh well
     expcalc->sp->fainting_client = get_client_no;
-    for (int i = 0; i < 7; i++)
+    for (int i = 0; i < (s32)NELEMS(store_work_params); i++)
     {
         expcalc->work[i] = store_work_params[i];
+    }
+
+    if (expcalc->seq_no == 0) // set first pokemon gaining experience to a specific one so that it doesn't try to give experience to something that doesn't need it
+    {
+        int sel_mons_no, item, eqp;
+        struct PartyPokemon *pp;
+
+        // grab the pokémon that is actually gaining the experience, factor in experience share here because i don't want to expose the whole main task
+        for (sel_mons_no = 0; sel_mons_no < BattleWorkPokeCountGet(expcalc->bw, 0); sel_mons_no++)
+        {
+            if (!(trackPartyExperience & No2Bit(sel_mons_no))) // if party index has not already been looped over
+            {
+                pp = BattleWorkPokemonParamGet(expcalc->bw, 0, sel_mons_no);
+                if (pp == NULL)
+                {
+                    expcalc->work[6] = BattleWorkPokeCountGet(expcalc->bw, 0);
+                    break;
+                }
+                item = GetMonData(pp, MON_DATA_HELD_ITEM, NULL);
+                eqp = GetItemData(item, ITEM_PARAM_HOLD_EFFECT, 5);
+
+                if ((eqp == HOLD_EFFECT_EXP_SHARE) || (expcalc->sp->obtained_exp_right_flag[(expcalc->sp->fainting_client >> 1) & 1] & No2Bit(sel_mons_no)))
+                {
+                    expcalc->work[6] = sel_mons_no;
+                    trackPartyExperience |= No2Bit(sel_mons_no);
+                    break;
+                }
+            }
+        }
+        if (sel_mons_no >= BattleWorkPokeCountGet(expcalc->bw, 0)) // invalid party index will end the task
+            expcalc->work[6] = sel_mons_no;
     }
 
     // third step:  run current step of exp distribution
@@ -1397,16 +1465,17 @@ BOOL Task_DistributeExp_capture_experience(void *arg0, void *work, u32 get_clien
         ret = TRUE;
 
         store_current_exp_step = 0;
-        for (int i = 0; i < 7; i++) // reset and pass back to main func
+        for (int i = 0; i < (s32)NELEMS(store_work_params); i++) // reset and pass back to main func
         {
             store_work_params[i] = 0;
             expcalc->work[i] = original_work_params[i];
         }
+        trackPartyExperience = 0;
     }
     else // otherwise store the exp step to the variable, restore work params, pass back to main func
     {
         store_current_exp_step = expcalc->seq_no;
-        for (int i = 0; i < 7; i++)
+        for (int i = 0; i < (s32)NELEMS(store_work_params); i++)
         {
             store_work_params[i] = expcalc->work[i];
             expcalc->work[i] = original_work_params[i];
@@ -1608,9 +1677,9 @@ BOOL btl_scr_cmd_33_statbuffchange(void *bw, struct BattleStruct *sp)
                 {
                     // specifically for flower veil, we know that one of the Pokémon have flower veil.  we need to change the client that it prints the ability of to the flower veil client
                     u32 flower_veil_client;
-                    
+
                     flower_veil_client = (GetBattlerAbility(sp, sp->state_client) == ABILITY_FLOWER_VEIL) ? sp->state_client : BATTLER_ALLY(sp->state_client);
-                    
+
                     if (sp->addeffect_type == ADD_EFFECT_ABILITY)
                     {
                         sp->mp.msg_id = BATTLE_MSG_ABILITY_SUPPRESSES_STAT_LOSS;
@@ -1703,7 +1772,7 @@ BOOL btl_scr_cmd_33_statbuffchange(void *bw, struct BattleStruct *sp)
                 {
                     flag = 1;
                 }
-                else if (sp->battlemon[sp->state_client].condition2 & STATUS2_FLAG_SUBSTITUTE)
+                else if (sp->battlemon[sp->state_client].condition2 & STATUS2_SUBSTITUTE)
                 {
                     flag = 2;
                 }
@@ -1884,7 +1953,7 @@ BOOL btl_scr_cmd_7c_beat_up_damage_calc(void *bw, struct BattleStruct *sp)
     int species, form, number_of_hits;
     s32 newBaseDamage;
     struct PartyPokemon *mon;
-    
+
     IncrementBattleScriptPtr(sp, 1);
 
     int partyCount = Battle_GetClientPartySize(bw, sp->attack_client);
@@ -1894,20 +1963,20 @@ BOOL btl_scr_cmd_7c_beat_up_damage_calc(void *bw, struct BattleStruct *sp)
         sp->multi_hit_count_temp = 2;
         sp->loop_hit_check = 0xFD;
         sp->beat_up_count = 0;
-        mon = Battle_GetClientPartyMon(bw, sp->attack_client, sp->beat_up_count); 
+        mon = Battle_GetClientPartyMon(bw, sp->attack_client, sp->beat_up_count);
 
         while(sp->beat_up_count != sp->sel_mons_no[sp->attack_client] &&
-                (GetMonData(mon, MON_DATA_HP, 0) == 0 || 
-                GetMonData(mon, MON_DATA_SPECIES_OR_EGG, 0) == 0|| 
-                GetMonData(mon, MON_DATA_SPECIES_OR_EGG, 0) == 494 || 
+                (GetMonData(mon, MON_DATA_HP, 0) == 0 ||
+                GetMonData(mon, MON_DATA_SPECIES_OR_EGG, 0) == 0||
+                GetMonData(mon, MON_DATA_SPECIES_OR_EGG, 0) == 494 ||
                 GetMonData(mon, MON_DATA_STATUS, 0) != 0))
                 {
 
             sp->beat_up_count++;
-            mon = Battle_GetClientPartyMon(bw, sp->attack_client, sp->beat_up_count); 
-        
+            mon = Battle_GetClientPartyMon(bw, sp->attack_client, sp->beat_up_count);
+
         }
-    }   
+    }
 
     mon = Battle_GetClientPartyMon(bw, sp->attack_client, sp->beat_up_count);
     species = GetMonData(mon, MON_DATA_SPECIES, 0);
@@ -1923,13 +1992,13 @@ BOOL btl_scr_cmd_7c_beat_up_damage_calc(void *bw, struct BattleStruct *sp)
     number_of_hits = sp->beat_up_count;
 
     if (sp->beat_up_count < partyCount) {
-        
+
         mon = Battle_GetClientPartyMon(bw, sp->attack_client, sp->beat_up_count);
 
         while(sp->beat_up_count != sp->sel_mons_no[sp->attack_client] &&
-                (GetMonData(mon, MON_DATA_HP, 0) == 0 || 
-                GetMonData(mon, MON_DATA_SPECIES_OR_EGG, 0) == 0 || 
-                GetMonData(mon, MON_DATA_SPECIES_OR_EGG, 0) == 494 || 
+                (GetMonData(mon, MON_DATA_HP, 0) == 0 ||
+                GetMonData(mon, MON_DATA_SPECIES_OR_EGG, 0) == 0 ||
+                GetMonData(mon, MON_DATA_SPECIES_OR_EGG, 0) == 494 ||
                 GetMonData(mon, MON_DATA_STATUS, 0) != 0))
                 {
 
@@ -1942,7 +2011,7 @@ BOOL btl_scr_cmd_7c_beat_up_damage_calc(void *bw, struct BattleStruct *sp)
                 break;
             }
 
-        } 
+        }
     } else {
         sp->multi_hit_count = 1;
         sp->multi_hit_count_temp = number_of_hits;
@@ -1969,7 +2038,7 @@ const u16 sLowKickWeightToPower[][2] =
  *  @param client battler whose weight to grab
  *  @return battler's weight
  */
-s32 GetPokemonWeight(void *bw, struct BattleStruct *sp, u32 client)
+s32 GetPokemonWeight(void *bw UNUSED, struct BattleStruct *sp, u32 client)
 {
     s32 weight;
 
@@ -2054,7 +2123,7 @@ BOOL btl_scr_cmd_d0_checkshouldleavewith1hp(void *bw, struct BattleStruct *sp)
     {
         flag = 1;
     }
-    else if ((holdeffect == HOLD_EFFECT_HP_MAX_SURVIVE_1_HP) && (sp->battlemon[client_no].hp == sp->battlemon[client_no].maxhp))
+    else if ((holdeffect == HOLD_EFFECT_HP_MAX_SURVIVE_1_HP) && (sp->battlemon[client_no].hp == (s32)sp->battlemon[client_no].maxhp))
     {
         flag = 1;
     }
@@ -2146,7 +2215,7 @@ BOOL btl_scr_cmd_d1_trynaturalcure(void *bw, struct BattleStruct *sp)
  *  @param sp global battle structure
  *  @return FALSE
  */
-BOOL btl_scr_cmd_E1_reduceweight(void *bw, struct BattleStruct *sp)
+BOOL btl_scr_cmd_E1_reduceweight(void *bw UNUSED, struct BattleStruct *sp)
 {
     s32 delta;
 
@@ -2198,7 +2267,7 @@ BOOL btl_scr_cmd_E2_heavyslamdamagecalc(void *bw, struct BattleStruct *sp)
  *  @param sp global battle structure
  *  @return FALSE
  */
-BOOL btl_scr_cmd_E3_isuserlowerlevel(void *bw, struct BattleStruct *sp)
+BOOL btl_scr_cmd_E3_isuserlowerlevel(void *bw UNUSED, struct BattleStruct *sp)
 {
     IncrementBattleScriptPtr(sp, 1);
     int address = read_battle_script_param(sp);
@@ -2514,7 +2583,7 @@ u32 CalculateBallShakes(void *bw, struct BattleStruct *sp)
             }
         }
 
-        if(sp->item_work == ITEM_FRIEND_BALL && i == caughtMons) // if amount of succeeded captures is the same as necessary for the type of capture
+        if (sp->item_work == ITEM_FRIEND_BALL && i == caughtMons) // if amount of succeeded captures is the same as necessary for the type of capture
         {
             u32 friendship = 200;
             SetMonData(Battle_GetClientPartyMon(bw,sp->defence_client,0), MON_DATA_FRIENDSHIP, &friendship);
@@ -2575,7 +2644,7 @@ u32 DealWithCriticalCaptureShakes(struct EXP_CALCULATOR *expcalc, u32 shakes)
             expcalc->work[3] = 1; // a failed critical capture still shakes once
         }
     }
-    else// if (shakes < 4)
+    else
     {
         if (shakes == 4)
         {

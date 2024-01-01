@@ -177,8 +177,14 @@ void GetMoveDataTable(void *dest)
 }
 
 
-// this also needs to fork from the function that is in the rom already
-u32 __attribute__((long_call)) GetMoveData(u16 id, u32 field)
+/**
+ *  @brief get move data field requested from ARC_MOVE_DATA
+ *
+ *  @param id move index
+ *  @param field MOVE_DATA_* constant requesting data
+ *  @return requested data
+ */
+u32 LONG_CALL GetMoveData(u16 id, u32 field)
 {
     struct BattleMove *bm = sys_AllocMemory(0, sizeof(struct BattleMove));
     ArchiveDataLoad(bm, ARC_MOVE_DATA, id);

@@ -61,6 +61,10 @@ VecFx32;
 
 #define	ALIGN4 __attribute__((aligned(4)))
 #define MOVE_TABLES_TERMIN 0xFEFE
+#define THUMB_FUNC __attribute__((target("thumb")))
+#define LONG_CALL __attribute__((long_call))
+#define UNUSED __attribute__((unused))
+#define FALLTHROUGH __attribute__ ((fallthrough))
 
 // Extracts the upper 16 bits of a 32-bit number
 #define HIHALF(n) (((n) & 0xFFFF0000) >> 16)
@@ -68,24 +72,30 @@ VecFx32;
 // Extracts the lower 16 bits of a 32-bit number
 #define LOHALF(n) ((n) & 0xFFFF)
 
-void __attribute__((long_call)) GF_ASSERT(u32 cond);
-u16 __attribute__((long_call)) gf_rand(void);
+#define No2Bit(n) ((1) << (n))
 
-void __attribute__((long_call)) sys_FreeMemoryEz(void*);
-void* __attribute__((long_call)) sys_AllocMemory(u32,u32);
+// validates a pointer's value
+#define IS_NOT_VALID_EWRAM_POINTER(n) ((u32)(n) >= 0x03000000 || (u32)(n) < 0x02000000)
 
-u32 __attribute__((long_call)) GF_ExpHeap_FndGetTotalFreeSize(u32 heapId);
+void LONG_CALL GF_ASSERT(u32 cond);
+u16 LONG_CALL gf_rand(void);
 
-void __attribute__((long_call)) ArcUtil_PalSet(u32 fileIdx, u32 dataIdx, u8 palType, u32 offs, u32 transSize, u32 heapID);
-void *__attribute__((long_call)) ArchiveDataLoadMalloc(int arcID, int datID, int heapID);
-void __attribute__((long_call)) ArchiveDataLoad(void *data, int arcID, int datID);
-void *__attribute__((long_call)) ArchiveDataLoadMallocOfs(int arcID, int datID, int heapID, int ofs, int size);
-void __attribute__((long_call)) ArchiveDataLoadOfs(void *data, int arcID, int datID, int ofs, int size);
-void *__attribute__((long_call)) sys_AllocMemoryLo(u32 heap_id, u32 size);
-void *__attribute__((long_call)) NARC_ctor(u32 narc_id, u32 heap_id);
+void LONG_CALL sys_FreeMemoryEz(void*);
+void* LONG_CALL sys_AllocMemory(u32,u32);
 
-void *memcpy(u8 *dest, u8 *src, u32 size);
-void sprintf(u8 *buf, const u8 *str, ...);
+u32 LONG_CALL GF_ExpHeap_FndGetTotalFreeSize(u32 heapId);
+
+void LONG_CALL ArcUtil_PalSet(u32 fileIdx, u32 dataIdx, u8 palType, u32 offs, u32 transSize, u32 heapID);
+void *LONG_CALL ArchiveDataLoadMalloc(int arcID, int datID, int heapID);
+void LONG_CALL ArchiveDataLoad(void *data, int arcID, int datID);
+void *LONG_CALL ArchiveDataLoadMallocOfs(int arcID, int datID, int heapID, int ofs, int size);
+void LONG_CALL ArchiveDataLoadOfs(void *data, int arcID, int datID, int ofs, int size);
+void *LONG_CALL sys_AllocMemoryLo(u32 heap_id, u32 size);
+void *LONG_CALL NARC_ctor(u32 narc_id, u32 heap_id);
+
+void *memcpy(void *dest, void *src, u32 size);
+void *memset(void *dest, u8 fill, u32 size);
+void sprintf(u8 *buf, char *str, ...);
 void debugsyscall(u8 *buf);
 
 #endif
