@@ -1119,14 +1119,20 @@
 /* SPECIES_WALKING_WAKE    */ .halfword 0
 /* SPECIES_IRON_LEAVES     */ .halfword 0
 /* SPECIES_DIPPLIN         */ .halfword 0
-/* SPECIES_ARCHALUDON      */ .halfword 0
-/* SPECIES_RAGING_BOLT     */ .halfword 0
-/* SPECIES_IRON_CROWN      */ .halfword 0
-/* SPECIES_OGERPON         */ .halfword 0
+/* SPECIES_POLTCHAGEIST    */ .halfword 0
+/* SPECIES_SINISTCHA       */ .halfword 0
 /* SPECIES_OKIDOGI         */ .halfword 0
 /* SPECIES_MUNKIDORI       */ .halfword 0
 /* SPECIES_FEZANDIPITI     */ .halfword 0
+/* SPECIES_OGERPON         */ .halfword 0
+/* SPECIES_ARCHALUDON      */ .halfword 0
+/* SPECIES_HYDRAPPLE       */ .halfword 0
+/* SPECIES_GOUGING_FIRE    */ .halfword 0
+/* SPECIES_RAGING_BOLT     */ .halfword 0
+/* SPECIES_IRON_BOULDER    */ .halfword 0
+/* SPECIES_IRON_CROWN      */ .halfword 0
 /* SPECIES_TERAPAGOS       */ .halfword 0
+/* SPECIES_PECHARUNT       */ .halfword 0
 /* SPECIES_SPEKTRE         */ .halfword 440
 /* SPECIES_NITEMUR         */ .halfword 441
 /* SPECIES_LICKIDRULE      */ .halfword 442
@@ -1147,7 +1153,6 @@
 /* SPECIES_DISGUMSTER      */ .halfword 454
 /* SPECIES_YOOEFOH         */ .halfword 455
 /* SPECIES_KOMALARGY       */ .halfword 456
-
 
 
 

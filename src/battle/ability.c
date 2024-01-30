@@ -111,7 +111,6 @@ const u16 PowderMoveList[] = {
     MOVE_SPORE,
 };
 
-
 /**
  *  @brief see if the attacker's move is completely negated by the defender's ability and queue up the appropriate subscript
  *
@@ -249,6 +248,15 @@ int MoveCheckDamageNegatingAbilities(struct BattleStruct *sp, int attacker, int 
         }
     }
 
+    // Handle Psychic Terrain
+    // Block any natural priority move or a move made priority by an ability, if the terrain is Psychic Terrain
+    // Courtesy of Dray (https://github.com/Drayano60)
+    if (sp->terrainOverlay.type == PSYCHIC_TERRAIN && sp->terrainOverlay.numberOfTurnsLeft > 0 && IsClientGrounded(sp, defender)) {
+        if (adjustedMoveHasPositivePriority(sp, attacker) && CurrentMoveShouldNotBeExemptedFromPriorityBlocking(sp, attacker, defender)) {
+            scriptnum = SUB_SEQ_HANDLE_JUST_FAIL;
+        }
+    }
+
     return scriptnum;
 }
 
@@ -281,7 +289,8 @@ enum
 
 // items that display messages.
     SWITCH_IN_CHECK_AIR_BALLOON,
-
+    SWITCH_IN_CHECK_FIELD,
+    SWITCH_IN_CHECK_TERRAIN_SEED,
     SWITCH_IN_CHECK_END,
 };
 
@@ -1163,8 +1172,37 @@ int SwitchInAbilityCheck(void *bw, struct BattleStruct *sp)
                 if (i == (s32)client_set_max) {
                     sp->switch_in_check_seq_no++;
                 }
-                FALLTHROUGH;
+                break;
                 // 02253D78
+            case SWITCH_IN_CHECK_FIELD:
+                if (sp->printed_field_message == 0) {
+                    sp->terrainOverlay.type = TERRAIN_NONE;
+                    sp->terrainOverlay.numberOfTurnsLeft = 0;
+                    scriptnum = SUB_SEQ_HANDLE_FIELD_EFFECTS_INITIAL_MSG;
+                    ret = SWITCH_IN_CHECK_MOVE_SCRIPT;
+
+                    if (ret == SWITCH_IN_CHECK_MOVE_SCRIPT) {
+                        sp->printed_field_message = 1;
+                    }
+                }
+                sp->switch_in_check_seq_no++;
+                break;
+            case SWITCH_IN_CHECK_TERRAIN_SEED:;
+                u16 heldItem;
+                for (i = 0; i < client_set_max; i++) {
+                    client_no = sp->turn_order[i];
+                    heldItem = GetBattleMonItem(sp, client_no);
+                    if (IS_ITEM_TERRAIN_SEED(heldItem) && TerrainSeedShouldActivate(sp, heldItem)) {
+                        sp->state_client = client_no;
+                        scriptnum = SUB_SEQ_HANDLE_TERRAIN_SEEDS;
+                        ret = SWITCH_IN_CHECK_MOVE_SCRIPT;
+                        break;
+                    }
+                }
+                if (i == (s32)client_set_max) {
+                    sp->switch_in_check_seq_no++;
+                }
+                FALLTHROUGH;
             case SWITCH_IN_CHECK_END:
                 sp->switch_in_check_seq_no = 0;
                 ret = SWITCH_IN_CHECK_CHECK_END;

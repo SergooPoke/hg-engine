@@ -4730,7 +4730,7 @@ movedata MOVE_TAIL_GLOW, "Tail Glow"
 movedata MOVE_LUSTER_PURGE, "Luster Purge"
     battleeffect 72
     pss SPLIT_SPECIAL
-    basepower 70
+    basepower 95
     type TYPE_PSYCHIC
     accuracy 100
     pp 5
@@ -4746,7 +4746,7 @@ movedata MOVE_LUSTER_PURGE, "Luster Purge"
 movedata MOVE_MIST_BALL, "Mist Ball"
     battleeffect 71
     pss SPLIT_SPECIAL
-    basepower 70
+    basepower 95
     type TYPE_PSYCHIC
     accuracy 100
     pp 5
@@ -8472,7 +8472,7 @@ movedata MOVE_DRAGON_TAIL, "Dragon Tail"
     movedescription MOVE_DRAGON_TAIL, "The foe is made to\nswitch out with an\nally. In the wild,\nthe battle ends."
 
 movedata MOVE_WORK_UP, "Work Up"
-    battleeffect 0
+    battleeffect 295
     pss SPLIT_STATUS
     basepower 0
     type TYPE_NORMAL
@@ -8616,7 +8616,7 @@ movedata MOVE_RAZOR_SHELL, "Razor Shell"
     movedescription MOVE_RAZOR_SHELL, "The foe is cut\nby sharp shells.\nIt may also lower\nthe foe’s Defense."
 
 movedata MOVE_HEAT_CRASH, "Heat Crash"
-    battleeffect 0
+    battleeffect 292
     pss SPLIT_PHYSICAL
     basepower 1
     type TYPE_FIRE
@@ -9317,7 +9317,7 @@ movedata MOVE_FLOWER_SHIELD, "Flower Shield"
     terminatedata
 
 movedata MOVE_GRASSY_TERRAIN, "Grassy Terrain"
-    battleeffect 0
+    battleeffect 294
     pss SPLIT_STATUS
     basepower 0
     type TYPE_GRASS
@@ -9327,12 +9327,12 @@ movedata MOVE_GRASSY_TERRAIN, "Grassy Terrain"
     target MOVE_TARGET_ACTIVE_FIELD
     priority 0
     flags FLAG_MIRROR_MOVE | FLAG_PROTECT | FLAG_MAGIC_COAT
-    appeal 0x00
-    contesttype CONTEST_COOL
+    appeal 0x05
+    contesttype CONTEST_BEAUTY
     terminatedata
 
 movedata MOVE_MISTY_TERRAIN, "Misty Terrain"
-    battleeffect 0
+    battleeffect 294
     pss SPLIT_STATUS
     basepower 0
     type (FAIRY_TYPE_IMPLEMENTED) ? TYPE_FAIRY : TYPE_NORMAL
@@ -9342,8 +9342,8 @@ movedata MOVE_MISTY_TERRAIN, "Misty Terrain"
     target MOVE_TARGET_ACTIVE_FIELD
     priority 0
     flags FLAG_MIRROR_MOVE | FLAG_PROTECT | FLAG_MAGIC_COAT
-    appeal 0x00
-    contesttype CONTEST_COOL
+    appeal 0x05
+    contesttype CONTEST_BEAUTY
     terminatedata
 
 movedata MOVE_ELECTRIFY, "Electrify"
@@ -9676,8 +9676,8 @@ movedata MOVE_HAPPY_HOUR, "Happy Hour"
     contesttype CONTEST_COOL
     terminatedata
 
-movedata MOVE_ELECTRIC_TERRAIN, "Electric Terrain"
-    battleeffect 0
+movedata MOVE_ELECTRIC_TERRAIN, "ElectricTerrain"
+    battleeffect 294
     pss SPLIT_STATUS
     basepower 0
     type TYPE_ELECTRIC
@@ -9687,8 +9687,8 @@ movedata MOVE_ELECTRIC_TERRAIN, "Electric Terrain"
     target MOVE_TARGET_ACTIVE_FIELD
     priority 0
     flags FLAG_MIRROR_MOVE | FLAG_PROTECT | FLAG_MAGIC_COAT
-    appeal 0x00
-    contesttype CONTEST_COOL
+    appeal 0x05
+    contesttype CONTEST_SMART // Prior to Pokémon Omega Ruby and Alpha Sapphire, it was known as the Smart condition.
     terminatedata
 
 movedata MOVE_DAZZLING_GLEAM, "Dazzling Gleam"
@@ -10787,7 +10787,7 @@ movedata MOVE_ANCHOR_SHOT, "Anchor Shot"
     terminatedata
 
 movedata MOVE_PSYCHIC_TERRAIN, "Psychic Terrain"
-    battleeffect 0
+    battleeffect 294
     pss SPLIT_STATUS
     basepower 0
     type TYPE_PSYCHIC
@@ -11746,8 +11746,8 @@ movedata MOVE_VEEVEE_VOLLEY, "Veevee Volley"
     contesttype CONTEST_COOL
     terminatedata
 
-movedata MOVE_DOUBLE_IRON_BASH, "Double Iron Bash"
-    battleeffect 31
+movedata MOVE_DOUBLE_IRON_BASH, "Double IronBash"
+    battleeffect 296
     pss SPLIT_PHYSICAL
     basepower 60
     type TYPE_STEEL
@@ -12812,7 +12812,7 @@ movedata MOVE_FLIP_TURN, "Flip Turn"
     terminatedata
 
 movedata MOVE_TRIPLE_AXEL, "Triple Axel"
-    battleeffect 104
+    battleeffect 298
     pss SPLIT_PHYSICAL
     basepower 20
     type TYPE_ICE
@@ -13487,7 +13487,7 @@ movedata MOVE_JET_PUNCH, "Jet Punch"
     terminatedata
 
 movedata MOVE_SPICY_EXTRACT, "Spicy Extract"
-    battleeffect 0
+    battleeffect 302
     pss SPLIT_STATUS
     basepower 0
     type TYPE_GRASS
@@ -13517,7 +13517,7 @@ movedata MOVE_SPIN_OUT, "Spin Out"
     terminatedata
 
 movedata MOVE_POPULATION_BOMB, "Population Bomb"
-    battleeffect 0
+    battleeffect 297
     pss SPLIT_PHYSICAL
     basepower 20
     type TYPE_NORMAL
@@ -13592,7 +13592,7 @@ movedata MOVE_SALT_CURE, "Salt Cure"
     terminatedata
 
 movedata MOVE_TRIPLE_DIVE, "Triple Dive"
-    battleeffect 104
+    battleeffect 299
     pss SPLIT_PHYSICAL
     basepower 30
     type TYPE_WATER
@@ -13637,7 +13637,7 @@ movedata MOVE_DOODLE, "Doodle"
     terminatedata
 
 movedata MOVE_FILLET_AWAY, "Fillet Away"
-    battleeffect 0
+    battleeffect 303
     pss SPLIT_STATUS
     basepower 0
     type TYPE_NORMAL
@@ -14063,28 +14063,30 @@ movedata MOVE_BLAZING_TORQUE, "Blazing Torque"
     type TYPE_FIRE
     accuracy 100
     pp 10
-    effectchance 0
+    effectchance 30
     target MOVE_TARGET_SELECTED
     priority 0
     flags FLAG_KEEP_HP_BAR | FLAG_PROTECT | FLAG_MIRROR_MOVE | FLAG_KINGS_ROCK
     appeal 0x00
     contesttype CONTEST_COOL
     terminatedata
+    movedescription MOVE_BLAZING_TORQUE, "---"
 
 movedata MOVE_WICKED_TORQUE, "Wicked Torque"
-    battleeffect 0
+    battleeffect 301
     pss SPLIT_PHYSICAL
     basepower 80
     type TYPE_DARK
     accuracy 100
     pp 10
-    effectchance 0
+    effectchance 10
     target MOVE_TARGET_SELECTED
     priority 0
     flags FLAG_KEEP_HP_BAR | FLAG_PROTECT | FLAG_MIRROR_MOVE | FLAG_KINGS_ROCK
     appeal 0x00
     contesttype CONTEST_COOL
     terminatedata
+    movedescription MOVE_WICKED_TORQUE, "---"
 
 movedata MOVE_NOXIOUS_TORQUE, "Noxious Torque"
     battleeffect 2
@@ -14093,13 +14095,14 @@ movedata MOVE_NOXIOUS_TORQUE, "Noxious Torque"
     type TYPE_POISON
     accuracy 100
     pp 10
-    effectchance 0
+    effectchance 30
     target MOVE_TARGET_SELECTED
     priority 0
     flags FLAG_KEEP_HP_BAR | FLAG_PROTECT | FLAG_MIRROR_MOVE | FLAG_KINGS_ROCK
     appeal 0x00
     contesttype CONTEST_COOL
     terminatedata
+    movedescription MOVE_NOXIOUS_TORQUE, "---"
 
 movedata MOVE_COMBAT_TORQUE, "Combat Torque"
     battleeffect 6
@@ -14108,13 +14111,14 @@ movedata MOVE_COMBAT_TORQUE, "Combat Torque"
     type TYPE_FIGHTING
     accuracy 100
     pp 10
-    effectchance 0
+    effectchance 30
     target MOVE_TARGET_SELECTED
     priority 0
     flags FLAG_KEEP_HP_BAR | FLAG_PROTECT | FLAG_MIRROR_MOVE | FLAG_KINGS_ROCK
     appeal 0x00
     contesttype CONTEST_COOL
     terminatedata
+    movedescription MOVE_COMBAT_TORQUE, "---"
 
 movedata MOVE_MAGICAL_TORQUE, "Magical Torque"
     battleeffect 76
@@ -14123,13 +14127,14 @@ movedata MOVE_MAGICAL_TORQUE, "Magical Torque"
     type (FAIRY_TYPE_IMPLEMENTED) ? TYPE_FAIRY : TYPE_NORMAL
     accuracy 100
     pp 10
-    effectchance 0
+    effectchance 30
     target MOVE_TARGET_SELECTED
     priority 0
     flags FLAG_KEEP_HP_BAR | FLAG_PROTECT | FLAG_MIRROR_MOVE | FLAG_KINGS_ROCK
     appeal 0x00
     contesttype CONTEST_COOL
     terminatedata
+    movedescription MOVE_MAGICAL_TORQUE, "---"
 
 movedata MOVE_HYDRO_STEAM, "Hydro Steam"
     battleeffect 0
@@ -14147,7 +14152,7 @@ movedata MOVE_HYDRO_STEAM, "Hydro Steam"
     terminatedata
 
 movedata MOVE_PSYBLADE, "Psyblade"
-    battleeffect 0
+    battleeffect 300
     pss SPLIT_PHYSICAL
     basepower 80
     type TYPE_PSYCHIC
