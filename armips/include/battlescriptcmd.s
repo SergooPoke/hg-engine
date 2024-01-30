@@ -13,6 +13,9 @@ ADD_STATUS_SHELL_SMASH equ 152
 ADD_STATUS_V_CREATE equ 153
 ADD_STATUS_AUTOTOMIZE equ 154
 ADD_STATUS_GROWTH equ 155
+ADD_STATUS_WORK_UP equ 156
+ADD_STATUS_SPICY_EXTRACT equ 157
+ADD_STATUS_FILLET_AWAY equ 158
 
 // status change
 
@@ -1484,4 +1487,48 @@ MOVE_DATA_CONTEST_TYPE equ 11
 .macro iftailwindactive,battler,address
     .word 0xE5, battler
     .word ((address - org()) / 4) - 1
+.endmacro
+
+.macro ifcurrentfieldistype,terrain,address
+    .word 0xE6, terrain
+    .word ((address - org()) / 4) - 1
+.endmacro
+
+.macro ifmovepowergreaterthanzero,address
+    .word 0xE7
+    .word ((address - org()) / 4) - 1
+.endmacro
+
+.macro ifgrounded,battler,address
+    .word 0xE8, battler
+    .word ((address - org()) / 4) - 1
+.endmacro
+
+.macro checkifcurrentadjustedmoveistype,type,address
+    .word 0xE9, type
+    .word ((address - org()) / 4) - 1
+.endmacro
+
+.macro ifcontactmove,address
+    .word 0xEA
+    .word ((address - org()) / 4) - 1
+.endmacro
+
+.macro ifsoundmove,address
+    .word 0xEB
+    .word ((address - org()) / 4) - 1
+.endmacro
+
+.macro updateterrainoverlay,endTerrainFlag,failAddress
+    .word 0xEC, endTerrainFlag
+    .word ((failAddress - org()) / 4) - 1
+.endmacro
+
+.macro ifterrainoverlayistype,terrainOverlayType,address
+    .word 0xED, terrainOverlayType
+    .word ((address - org()) / 4) - 1
+.endmacro
+
+.macro setpsychicterrainmoveusedflag
+    .word 0xEE
 .endmacro
