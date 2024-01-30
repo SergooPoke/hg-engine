@@ -352,6 +352,14 @@
 #define SUB_SEQ_HANDLE_RAISE_SPECIAL_DEFENSE_ON_HIT (342)
 #define SUB_SEQ_HANDLE_RAISE_SPEED_ON_HIT       (343)
 #define SUB_SEQ_HANDLE_RAISE_ATTACK_AND_SP_ATK_ON_HIT (344)
+#define SUB_SEQ_HANDLE_FIELD_EFFECTS_INITIAL_MSG      (345)
+#define SUB_SEQ_HANDLE_FIELD_EFFECTS_END_OF_TURN      (346)
+#define SUB_SEQ_HANDLE_TERRAIN_END                    (347)
+#define SUB_SEQ_HANDLE_JUST_FAIL                      (348)
+#define SUB_SEQ_HANDLE_TERRAIN_SEEDS                  (349)
+#define SUB_SEQ_WORK_UP                               (350)
+#define SUB_SEQ_SPICY_EXTRACT                         (351)
+#define SUB_SEQ_FILLET_AWAY                           (352)
 
 
 
@@ -513,6 +521,9 @@
 #define ADD_STATUS_EFF_V_CREATE                        (153)
 #define ADD_STATUS_EFF_AUTOTOMIZE                      (154)
 #define ADD_STATUS_EFF_HANDLE_GROWTH                   (155)
+#define ADD_STATUS_EFF_WORK_UP                         (156)
+#define ADD_STATUS_EFF_SPICY_EXTRACT                   (157)
+#define ADD_STATUS_EFF_FILLET_AWAY                     (158)
 
 
 

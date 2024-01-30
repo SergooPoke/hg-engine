@@ -691,7 +691,8 @@ struct __attribute__((packed)) BattlePokemon
                u32 imposter_flag : 1;        /**< imposter has activated */
                u32 critical_hits : 2;        /**< tracks the amount of critical hits the pokémon has landed while in battle so far */
                u32 air_ballon_flag : 1;      /**< the held air balloon has printed its message */
-               u32 : 11; // need to add to ClearBattleMonFlags when added to here as well
+               u32 potentially_affected_by_psychic_terrain_move_used_flag : 1;
+               u32 : 10; // need to add to ClearBattleMonFlags when added to here as well
     /* 0x2c */ u8 pp[4];                     /**< move pp left */
     /* 0x30 */ u8 pp_count[4];               /**< move max pp */
     /* 0x34 */ u8 level;                     /**< current level */
@@ -837,6 +838,15 @@ struct __attribute__((packed)) BattleAIWorkTable
     //length is 0x1DE0
     //the end of this struct is at 0x2134 in the BattleStruct
 };
+
+
+/**
+ *  @brief structure that tracks the terrain type currently present
+ */
+typedef struct {
+    enum TerrainOverlayType{TERRAIN_NONE, GRASSY_TERRAIN, MISTY_TERRAIN, ELECTRIC_TERRAIN, PSYCHIC_TERRAIN} type;
+    u8 numberOfTurnsLeft;
+} __attribute__((packed)) TerrainOverlay;
 
 
 /**
@@ -1031,6 +1041,9 @@ struct __attribute__((packed)) BattleStruct
     /*0x    */ u32 gainedExperienceShare[6]; // possible experience gained per party member in order to get level scaling done right
     /*0x    */ int SkillSeqWork[600];
     /*...*/
+
+               TerrainOverlay terrainOverlay;
+               u8 printed_field_message;
 };
 
 
@@ -1338,9 +1351,10 @@ struct __attribute__((packed)) POKEMON_APPEAR_PARAM
 
 struct __attribute__((packed)) ILLUSION_STRUCT
 {
-    u16 illusionNameBuf[2][12]; // at least get this hword aligned
-    u8 isSideInIllusion[2];
-    u8 illusionPos[2];
+    u16 illusionNameBuf[4][12]; // at least get this hword aligned
+    u8 illusionPos[4];
+    u8 illusionClient[4];
+    u8 isSideInIllusion;
 };
 
 struct __attribute__((packed)) SWITCH_MESSAGE_PARAM
@@ -2026,6 +2040,13 @@ int LONG_CALL AI_TypeCheckCalc(int effectiveness, u32 *flag);
  */
 BOOL LONG_CALL AI_ShouldUseNormalTypeEffCalc(struct BattleStruct *sp, u32 held_effect, int pos);
 
+/**
+ *  @brief grab trainer id of a client
+ *  @param bw battle work structure
+ *  @param client client whose trainer id to grab
+ *  @return trainer id of client
+ */
+u32 LONG_CALL BattleWork_GetTrainerIndex(void *bw, u32 client);
 
 
 /*Battle Script Function Declarations*/
@@ -2097,6 +2118,14 @@ BOOL BattleFormChangeCheck(void *bw, struct BattleStruct *sp, int *seq_no);
 u32 GetAdjustedMoveType(struct BattleStruct *sp, u32 client, u32 move); // account for normalize and such
 
 /**
+ *  @brief check if a move is a sound-based move
+ *
+ *  @param move move index to check for sound property
+ *  @return TRUE if is a sound move; FALSE otherwise
+ */
+BOOL IsMoveSoundBased(u32 move);
+
+/**
  *  @brief get the adjusted move type accounting for normalize without relying on a client
  *
  *  @param sp global battle structure
@@ -2155,6 +2184,23 @@ u32 ServerWazaHitAfterCheckAct(void *bw, struct BattleStruct *sp);
  */
 BOOL CheckDefenderItemEffectOnHit(void *bw, struct BattleStruct *sp, int *seq_no);
 
+/**
+ *  @brief dumbs client parameter down into its team in proper scenarios
+ *
+ *  @param bw battle work structure
+ *  @param client client to sanitize
+ *  @return team of client
+ */
+u32 SanitizeClientForTeamAccess(void *bw, u32 client);
+
+/**
+ *  @brief checks if the client's side has 2 battlers
+ *
+ *  @param bw battle work structure
+ *  @param client client whose side to check for 2 battlers
+ *  @return TRUE if the client's side has 2 battlers
+ */
+BOOL DoesSideHave2Battlers(void *bw, u32 client);
 
 
 // defined in battle_script_commands.c
@@ -2220,6 +2266,14 @@ void LoadBattleSubSeqScript(struct BattleStruct *sp, int kind, int index);
 void PushAndLoadBattleScript(struct BattleStruct *sp, int kind, int index);
 
 /**
+ *  @brief function to check whether a mon is grounded or not
+ *  @param sp global battle structure
+ *  @param client_no resolved battler
+ *  @return `TRUE` if grounded, `FALSE` otherwise
+ */
+BOOL IsClientGrounded(struct BattleStruct *sp, u32 client_no);
+
+/**
  *  @brief check if waitmessage battle script command should end
  *
  *  @param sp global battle structure
@@ -2261,7 +2315,6 @@ BOOL MoveHitDefenderAbilityCheck(void *bw, struct BattleStruct *sp, int *seq_no)
 u32 ServerWazaKoyuuCheck(void *bw, struct BattleStruct *sp);
 
 
-
 // defined in other_battle_calculators.c
 /**
  *  @brief compare battlers to determine who goes first
@@ -2290,6 +2343,54 @@ u8 CalcSpeed(void *bw, struct BattleStruct *sp, int client1, int client2, int fl
  */
 int ServerDoTypeCalcMod(void *bw, struct BattleStruct *sp, int move_no, int move_type, int attack_client, int defence_client, int damage, u32 *flag);
 
+/**
+ *  @brief see if a move has positive priority after adjustment
+ *
+ *  @param sp battle structure
+ *  @param attacker client to check
+ *  @return TRUE if the move has positive priority after adjustments
+ */
+BOOL adjustedMoveHasPositivePriority(struct BattleStruct *sp, int attacker);
+
+/**
+ *  @brief see if the move should NOT be exempted from priority blocking effects
+ *
+ *  @param sp battle structure
+ *  @param attacker attacker client
+ *  @param defender defender client
+ *  @return TRUE if the move should NOT be exempted from priority blocking effects
+ */
+BOOL CurrentMoveShouldNotBeExemptedFromPriorityBlocking(struct BattleStruct *sp, int attacker, int defender);
+
+/**
+ *  @brief Check if seed should activate
+ *
+ *  @param sp battle structure
+ *  @param heldItem held item
+ *  @return TRUE if seed should activate
+ */
+BOOL TerrainSeedShouldActivate(struct BattleStruct *sp, u16 heldItem);
+
+/**
+ * @brief gets the actual attack and defense for damage calculation
+ * @param sp battle structure
+ * @param attackerAttack attacker's Physical Attack
+ * @param defenderDefense defender's Physical Defense
+ * @param attackerSpecialAttack attacker's Special Attack
+ * @param defenderSpecialDefense defender's Special Defense
+ * @param attackerAttackstate attacker's Physical Attack state
+ * @param defenderDefenseState defender's Physical Defense state
+ * @param attackerSpecialAttackState attacker's Special Attack state
+ * @param defenderSpecialDefenseState defender's Special Defense state
+ * @param movesplit physical or special attack
+ * @param attacker attacker number
+ * @param defender defender number
+ * @param critical critial hit or not
+ * @param moveno move number
+ * @param equivalentAttack attack number used for calculation
+ * @param equivalentDefense defense number used for calculation
+ */
+void getEquivalentAttackAndDefense(struct BattleStruct *sp, u16 attackerAttack, u16 defenderDefense, u16 attackerSpecialAttack, u16 defenderSpecialDefense, s8 attackerAttackstate, s8 defenderDefenseState, s8 attackerSpecialAttackState, s8 defenderSpecialDefenseState, u8 *movesplit, u8 attacker, u8 defender, u8 critical, int moveno, u16 *equivalentAttack, u16 *equivalentDefense);
 
 // defined in mega.c
 /**
@@ -2302,9 +2403,36 @@ int ServerDoTypeCalcMod(void *bw, struct BattleStruct *sp, int move_no, int move
 u32 GrabMegaTargetForm(u32 mon, u32 item);
 
 
+typedef enum Terrain {
+    TERRAIN_PLAIN,
+    TERRAIN_SAND,
+    TERRAIN_GRASS,
+    TERRAIN_PUDDLE,
+    TERRAIN_MOUNTAIN,
+    TERRAIN_CAVE,
+    TERRAIN_SNOW,
+    TERRAIN_WATER,
+    TERRAIN_ICE,
+    TERRAIN_BUILDING,
+    TERRAIN_GREAT_MARSH,  // unused
+    TERRAIN_UNKNOWN,      // unused
+    TERRAIN_WILL,
+    TERRAIN_KOGA,
+    TERRAIN_BRUNO,
+    TERRAIN_KAREN,
+    TERRAIN_LANCE,
+    TERRAIN_DISTORTION_WORLD,  // unused
+    TERRAIN_BATTLE_TOWER,
+    TERRAIN_BATTLE_FACTORY,
+    TERRAIN_BATTLE_ARCADE,
+    TERRAIN_BATTLE_CASTLE,
+    TERRAIN_BATTLE_HALL,
+    TERRAIN_GIRATINA,  // unused
+    TERRAIN_MAX
+} Terrain;
 
+// This is a catch-all terrain that includes Pokemon League, Distortion World
+// and Battle Frontier.
+#define TERRAIN_OTHERS (TERRAIN_WILL)
 
-
-
-
-#endif
+#endif // BATTLE_H
