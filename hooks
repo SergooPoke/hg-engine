@@ -326,7 +326,7 @@ arm9 CapRareCandies 0208FEEA 1
 0012 ServerFieldConditionCheck 022494DC 2
 
 # dex digits
-0018 FormatDexNumberAnimationDigits 021E6A98 3
+# 0018 FormatDexNumberAnimationDigits 021E6A98 3
 
 # allow for grabbing ally and such in battle script parameters
 0012 GrabClientFromBattleScriptParam 0224768C 3

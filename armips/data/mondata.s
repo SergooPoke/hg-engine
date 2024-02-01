@@ -22683,7 +22683,7 @@ mondata SPECIES_AFROSTITE, "Afrostite"
     runchance 0
     colorflip BODY_COLOR_RED, 0 //todo?
     mondexentry SPECIES_AFROSTITE, "todo" 
-    mondexclassification SPECIES_AFROSTITE, "todo Pokémon"
+    mondexclassification SPECIES_AFROSTITE, "Dazzling Pokémon"
     mondexheight SPECIES_AFROSTITE, "4’07”" //todo
     mondexweight SPECIES_AFROSTITE, "89.5 lbs." //todo
             
@@ -22703,7 +22703,7 @@ mondata SPECIES_LEDIDER, "Ledider"
     runchance 0
     colorflip BODY_COLOR_RED, 0
     mondexentry SPECIES_LEDIDER, "todo"
-    mondexclassification SPECIES_LEDIDER, "Heroic Pokémon"
+    mondexclassification SPECIES_LEDIDER, "Justice Pokémon"
     mondexheight SPECIES_LEDIDER, "4’07”" //todo
     mondexweight SPECIES_LEDIDER, "178.5 lbs." //todo
     
@@ -22783,7 +22783,7 @@ mondata SPECIES_LIQWILDATE, "Liqwildate"
     runchance 0
     colorflip BODY_COLOR_PURPLE, 0
     mondexentry SPECIES_LIQWILDATE, "todo"
-    mondexclassification SPECIES_LIQWILDATE, "todo Pokémon"
+    mondexclassification SPECIES_LIQWILDATE, "Pin Cluster Pokémon"
     mondexheight SPECIES_LIQWILDATE, "8’02”" //todo
     mondexweight SPECIES_LIQWILDATE, "133.4 lbs." //todo
     
@@ -22823,7 +22823,7 @@ mondata SPECIES_TAKORONEL, "Takoronel"
     runchance 0
     colorflip BODY_COLOR_RED, 0
     mondexentry SPECIES_TAKORONEL, "todo. honestly u get it at this point"
-    mondexclassification SPECIES_TAKORONEL, "todo Pokémon"
+    mondexclassification SPECIES_TAKORONEL, "Commander Pokémon"
     mondexheight SPECIES_TAKORONEL, "2’11”"
     mondexweight SPECIES_TAKORONEL, "62.8 lbs."
     
@@ -22843,7 +22843,7 @@ mondata SPECIES_BIRNIGNANT, "Birnignant"
     runchance 0
     colorflip BODY_COLOR_RED, 0
     mondexentry SPECIES_BIRNIGNANT, "todo"
-    mondexclassification SPECIES_BIRNIGNANT, "todo Pokémon"
+    mondexclassification SPECIES_BIRNIGNANT, "Delivery Pokémon"
     mondexheight SPECIES_BIRNIGNANT, "2’11”"
     mondexweight SPECIES_BIRNIGNANT, "35.3 lbs."
 
@@ -22922,7 +22922,7 @@ mondata SPECIES_ARMAGESNOW, "Armagesnow"
     abilities ABILITY_SNOW_WARNING, ABILITY_NONE
     runchance 0
     colorflip BODY_COLOR_WHITE, 0
-    mondexentry SPECIES_ARMAGESNOW, "It lives a quiet life on mountains that\nare perpetually covered in snow.\nIt hides itself by whipping up blizzards."
+    mondexentry SPECIES_ARMAGESNOW, "todo"
     mondexclassification SPECIES_ARMAGESNOW, "Frost Tree Pokémon"
     mondexheight SPECIES_ARMAGESNOW, "7’03”"
     mondexweight SPECIES_ARMAGESNOW, "298.7 lbs."
@@ -22943,12 +22943,12 @@ mondata SPECIES_NURSAUND, "Nursaund"
     runchance 0
     colorflip BODY_COLOR_PINK, 0 //todo
     mondexentry SPECIES_NURSAUND, "todo"
-    mondexclassification SPECIES_NURSAUND, "todo Pokémon"
+    mondexclassification SPECIES_NURSAUND, "Guardian Pokémon"
     mondexheight SPECIES_NURSAUND, "3’07”"
     mondexweight SPECIES_NURSAUND, "68.3 lbs."
     
 mondata SPECIES_DISGUMSTER, "Disgumster"
-    basestats 90, 105, 112, 55, 70, 92
+    basestats 90, 105, 122, 55, 70, 92
     types TYPE_POISON, TYPE_STEEL
     catchrate 60 //todo
     baseexp 0 // defined in baseexp.s
@@ -22963,7 +22963,7 @@ mondata SPECIES_DISGUMSTER, "Disgumster"
     runchance 0
     colorflip BODY_COLOR_GREEN, 0
     mondexentry SPECIES_DISGUMSTER, "todo"
-    mondexclassification SPECIES_DISGUMSTER, "todo (Trash Heap?) Pokémon"
+    mondexclassification SPECIES_DISGUMSTER, "Trash Dump Pokémon"
     mondexheight SPECIES_DISGUMSTER, "6’03”" //todo
     mondexweight SPECIES_DISGUMSTER, "998.7 lbs."
     
