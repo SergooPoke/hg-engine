@@ -1097,6 +1097,26 @@ gIconPalTable:
 /* SPECIES_IRON_CROWN      */ .byte  0x0
 /* SPECIES_TERAPAGOS       */ .byte  0x0
 /* SPECIES_PECHARUNT       */ .byte  0x0
+/* SPECIES_SPEKTRE         */ .byte  0x2
+/* SPECIES_NITEMUR         */ .byte  0x2
+/* SPECIES_LICKIDRULE      */ .byte  0x0
+/* SPECIES_AFROSTITE       */ .byte  0x2
+/* SPECIES_LEDIDER         */ .byte  0x0
+/* SPECIES_SPIDEATH        */ .byte  0x0
+/* SPECIES_FALREST         */ .byte  0x1
+/* SPECIES_GIGATOBULL      */ .byte  0x2
+/* SPECIES_LIQWILDATE      */ .byte  0x0
+/* SPECIES_CURESOLA        */ .byte  0x0
+/* SPECIES_TAKORONEL       */ .byte  0x0
+/* SPECIES_BIRNIGNANT      */ .byte  0x1
+/* SPECIES_GOBLEYE         */ .byte  0x2
+/* SPECIES_CACTOLERO       */ .byte  0x1
+/* SPECIES_DRIFELIN        */ .byte  0x2
+/* SPECIES_ARMAGESNOW      */ .byte  0x1
+/* SPECIES_NURSAUND        */ .byte  0x1
+/* SPECIES_DISGUMSTER      */ .byte  0x1
+/* SPECIES_YOOEFOH         */ .byte  0x2
+/* SPECIES_KOMALARGY       */ .byte  0x2
 
 /* SPECIES_MEGA_VENUSAUR   */ .byte  0x1
 /* SPECIES_MEGA_CHARIZARD_X*/ .byte  0x0
